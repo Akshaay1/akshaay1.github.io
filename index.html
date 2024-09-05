@@ -34,6 +34,7 @@
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
+            position: relative;
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -53,14 +54,14 @@
         h1 {
             font-size: 36px;
             color: #333;
-            margin: 1px 0; /* Reduced margin to decrease distance */
+            margin: 1px 0;
             font-weight: bold;
         }
 
         p {
             font-size: 17px;
             color: #666;
-            margin-bottom: 20px; /* Reduced margin to bring social icons closer */
+            margin-bottom: 20px;
         }
 
         .social-icons {
@@ -68,9 +69,9 @@
         }
 
         .social-icons img {
-            width: 22px; /* Smaller size */
+            width: 22px;
             height: 22px;
-            margin: 0 8px; /* Spacing between icons */
+            margin: 0 8px;
             cursor: pointer;
             transition: filter 0.3s;
         }
@@ -79,12 +80,66 @@
             filter: hue-rotate(180deg) saturate(300%) brightness(0.7);
         }
 
+        .top-right-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            display: none;
+            align-items: center;
+            transition: width 0.3s ease;
+        }
+
+        .search-box input[type="text"] {
+            font-size: 14px;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .search-box button {
+            padding: 8px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: 5px;
+            background-color: #f7f7f7;
+        }
+
+        .search-icon {
+            cursor: pointer;
+            margin-right: 8px;
+            width: 17px;
+            height: 17px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .search-icon:hover {
+            transform: scale(1.2);
+            filter: brightness(0.8);
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
         .links a {
-            font-size: 17.5px;
+            font-size: 14px;
             color: #333;
             text-decoration: none;
-            margin: 0 10px;
-            padding: 10px 15px;
+            margin: 0 8px;
+            padding: 8px 12px;
             border-radius: 5px;
             position: relative;
             transition: color 0.3s;
@@ -109,12 +164,44 @@
         }
 
         .mode-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
             cursor: pointer;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .mode-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .dark-mode .mode-toggle .sun {
+            display: block;
+        }
+
+        .dark-mode .mode-toggle .moon {
+            display: none;
+        }
+
+        .mode-toggle .sun {
+            display: none;
+        }
+
+        .mode-toggle .moon {
+            display: block;
         }
 
         .dark-mode {
@@ -127,6 +214,10 @@
             color: #f7f7f7;
         }
 
+        .dark-mode h1 {
+            color: white;
+        }
+
         .dark-mode .links a {
             color: #f7f7f7;
         }
@@ -134,16 +225,59 @@
         .dark-mode .social-icons img {
             filter: invert(100%);
         }
+
+        .highlight {
+            background-color: yellow;
+        }
     </style>
     <script>
         function toggleMode() {
-            document.body.classList.toggle('dark-mode');
+            const body = document.body;
+            const modeToggle = document.querySelector('.mode-toggle');
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                modeToggle.setAttribute('aria-label', 'Switch to light mode');
+            } else {
+                modeToggle.setAttribute('aria-label', 'Switch to dark mode');
+            }
+        }
+
+        function toggleSearch() {
+            const searchBox = document.querySelector('.search-box');
+            searchBox.style.display = searchBox.style.display === 'none' || searchBox.style.display === '' ? 'flex' : 'none';
+        }
+
+        function searchAndHighlight() {
+            const searchText = document.getElementById('search-input').value.toLowerCase();
+            const elements = document.body.querySelectorAll('h1, p, a, .social-icons img');
+            
+            elements.forEach(el => {
+                el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, "$1");
+                if (el.textContent.toLowerCase().includes(searchText) && searchText) {
+                    const regex = new RegExp(searchText, 'gi');
+                    el.innerHTML = el.innerHTML.replace(regex, match => `<span class="highlight">${match}</span>`);
+                }
+            });
         }
     </script>
 </head>
 <body>
 
 <div class="container">
+    <div class="top-right-container">
+        <img src="search.png" alt="Search Icon" class="search-icon" onclick="toggleSearch()">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button onclick="searchAndHighlight()">Search</button>
+        </div>
+        <div class="links">
+            <a href="about.html"><b>About</b></a>
+            <a href="blog.html"><b>Blog</b></a>
+            <a href="https://drive.google.com/file/d/1ZCeWdQepqz5U5votvCwiRfeCK2Btk7WT/view?usp=sharing" target="_blank"><b>Resume</b></a>
+        </div>
+    </div>
+
     <img src="profile_2.jpg" alt="Profile Picture" class="profile-pic">
     <h1>Akshaay Kumar</h1>
     <p>Every shot counts, on and off the court.</p>
@@ -154,18 +288,26 @@
         <a href="https://www.linkedin.com/in/akshaay-kumar/" target="_blank"><img src="linkedin-logo.png" alt="LinkedIn"></a>
         <a href="https://www.instagram.com/akshaay__1/" target="_blank"><img src="ig.png" alt="Instagram"></a>
         <a href="https://x.com/Akshaay520938" target="_blank"><img src="twitter_1.png" alt="Twitter"></a>
-        <a href="https://open.spotify.com/playlist/3AGcyWmyR998opRUBbiCMU?si=S-UlUCfIRhmR7c8n5UsKaw&pi=a-Me8Yl29iT1yY&pt=510f5f362e15e88438606fed6cae35fe" target="_blank"><img src="itunes.png" alt="Spotify"></a>
-        <a href="https://www.facebook.com/akshaay01" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+        <a href="https://open.spotify.com/playlist/3AGcyWmyR998opRzUDGKtK?si=bf96e6f54e6a4144" target="_blank"><img src="spotify.png" alt="Spotify"></a>
     </div>
-
-    <div class="links">
-        <a href="about.html"><b>About</b></a>
-        <a href="blog.html"><b>Blog</b></a>
-        <a href="https://drive.google.com/file/d/1ZCeWdQepqz5U5votvCwiRfeCK2Btk7WT/view?usp=sharing" target="_blank"><b>Resume</b></a>
-    </div>
-
-    <img src="brightness-and-contrast.png" alt="Toggle Mode" class="mode-toggle" onclick="toggleMode()">
 </div>
+
+<button class="mode-toggle" onclick="toggleMode()" aria-label="Toggle dark mode">
+    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+</button>
 
 </body>
 </html>
