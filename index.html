@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshaay Kumar</title>
+    <link rel="icon" href="hacker.png" type="image/jpeg"> <!-- Favicon added here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .profile-pic {
+            width: 275px;
+            height: 275px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin: 1px 0; /* Reduced margin to decrease distance */
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 18.5px;
+            color: #666;
+            margin-bottom: 20px; /* Reduced margin to bring social icons closer */
+        }
+
+        .social-icons {
+            margin-bottom: 30px;
+        }
+
+        .social-icons img {
+            width: 25px; /* Smaller size */
+            height: 25px;
+            margin: 0 8px; /* Spacing between icons */
+            cursor: pointer;
+            transition: filter 0.3s;
+        }
+
+        .social-icons img:active {
+            filter: hue-rotate(180deg) saturate(300%) brightness(0.7);
+        }
+
+        .links a {
+            font-size: 17.5px;
+            color: #333;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: rgb(0, 128, 85);
+            transition: width 0.3s ease;
+        }
+
+        .links a:hover::after {
+            width: 100%;
+            left: 0;
+            background: rgb(0, 113, 128);
+        }
+
+        .mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: #f7f7f7;
+        }
+
+        .dark-mode .container {
+            background-color: #444;
+            color: #f7f7f7;
+        }
+
+        .dark-mode .links a {
+            color: #f7f7f7;
+        }
+
+        .dark-mode .social-icons img {
+            filter: invert(100%);
+        }
+    </style>
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <img src="profile_2.jpg" alt="Profile Picture" class="profile-pic">
+    <h1>Akshaay Kumar</h1>
+    <p>Every shot counts, on and off the court.</p>
+
+    <div class="social-icons">
+        <a href="https://github.com/Akshaay1" target="_blank"><img src="github.png" alt="GitHub"></a>
+        <a href="mailto:akshay1234avi@gmail.com"><img src="at.png" alt="Email"></a>
+        <a href="https://www.linkedin.com/in/akshaay-kumar/" target="_blank"><img src="linkedin-logo.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/akshaay__1/" target="_blank"><img src="ig.png" alt="Instagram"></a>
+        <a href="https://x.com/Akshaay520938" target="_blank"><img src="twitter_1.png" alt="Twitter"></a>
+        <a href="https://open.spotify.com/playlist/3AGcyWmyR998opRUBbiCMU?si=S-UlUCfIRhmR7c8n5UsKaw&pi=a-Me8Yl29iT1yY&pt=510f5f362e15e88438606fed6cae35fe" target="_blank"><img src="itunes.png" alt="Spotify"></a>
+        <a href="https://www.facebook.com/akshaay01" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+    </div>
+
+    <div class="links">
+        <a href="about.html"><b>About</b></a>
+        <a href="blog.html"><b>Blog</b></a>
+        <a href="https://drive.google.com/file/d/1ZCeWdQepqz5U5votvCwiRfeCK2Btk7WT/view?usp=sharing" target="_blank"><b>Resume</b></a>
+    </div>
+
+    <img src="brightness-and-contrast.png" alt="Toggle Mode" class="mode-toggle" onclick="toggleMode()">
+</div>
+
+</body>
+</html>
+
