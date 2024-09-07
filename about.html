@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshaay Kumar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .container {
+            max-width: 800px; /* Reduced from 1200px to 800px */
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .nav-left {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-right {
+            display: flex;
+            gap: 10px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+            transition: color 0.3s;
+            align-items: center;
+            display: flex;
+        }
+        .nav a:hover {
+            color: #10cfa6;
+        }
+        .heading-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .heading-container h1 {
+            font-size: 2.5em;
+            color: #414040;
+            margin-right: 20px;
+        }
+        .profile-img {
+            display: block;
+            margin: 20px auto 0;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        h2 {
+            margin-top: 50px;
+            font-size: 2em;
+            color: #414040;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .toggle-theme {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            transition: transform 0.3s ease;
+        }
+        .toggle-theme:hover {
+            transform: scale(1.1);
+        }
+        .toggle-theme svg {
+            width: 20px;
+            height: 20px;
+        }
+        .dark-mode .toggle-theme .sun {
+            display: block;
+        }
+        .dark-mode .toggle-theme .moon {
+            display: none;
+        }
+        .toggle-theme .sun {
+            display: none;
+        }
+        .toggle-theme .moon {
+            display: block;
+        }
+        .dark-mode {
+            background-color: #222;
+            color: #f0f0f0;
+        }
+        .dark-mode .nav a {
+            color: #f0f0f0;
+        }
+        .dark-mode h1, .dark-mode h2 {
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const modeToggle = document.querySelector('.toggle-theme');
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                modeToggle.setAttribute('aria-label', 'Switch to light mode');
+            } else {
+                modeToggle.setAttribute('aria-label', 'Switch to dark mode');
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="index.html">Akshaay Kumar</a>
+            </div>
+            <div class="nav-right">
+                <a href="blog.html">Blog</a>
+                <a href="https://drive.google.com/file/d/1ZCeWdQepqz5U5votvCwiRfeCK2Btk7WT/view?usp=sharing" target="_blank">Resume</a>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="about-section">
+                <div class="heading-container"></div>
+                <h1>About Me</h1>
+                <p>Throughout college, I’ve dabbled in everything—Data Science, AI/ML, fintech, NBFCs, startups, hackathons, and random competitions! If it caught my eye, I was all in. Whether it was building predictive models, analyzing financial markets, or creating innovative projects, I enjoyed exploring the endless possibilities of technology.</p>
+                
+                <img src="akshaay_user.jpeg" alt="Akshaay's photo" class="profile-img">
+            </div>
+        </div>
+    </div>
+
+    <button class="toggle-theme" onclick="toggleMode()" aria-label="Toggle dark mode">
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+</body>
+</html>
 
