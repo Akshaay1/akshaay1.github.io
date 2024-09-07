@@ -260,6 +260,17 @@
                 }
             });
         }
+
+        function handleSearchKeydown(event) {
+            if (event.key === 'Enter') {
+                searchAndHighlight();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('keydown', handleSearchKeydown);
+        });
     </script>
 </head>
 <body>
@@ -275,6 +286,7 @@
             <a href="about.html"><b>About</b></a>
             <a href="blog.html"><b>Blog</b></a>
             <a href="https://drive.google.com/file/d/1ZCeWdQepqz5U5votvCwiRfeCK2Btk7WT/view?usp=sharing" target="_blank"><b>Resume</b></a>
+            
         </div>
     </div>
 
@@ -311,4 +323,3 @@
 
 </body>
 </html>
-
