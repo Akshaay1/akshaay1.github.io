@@ -1,0 +1,760 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Space background decoration */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: none;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Navigation - Updated to match main page */
+.top-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: color 0.3s;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    margin: 0 8px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    position: relative;
+    transition: color 0.3s;
+    font-weight: bold;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #00bfff;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Style for current page indicator */
+.nav-links a.current::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Main Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    color: #00bfff;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 38px;
+    margin: 10px 0;
+    color: #333;
+    transition: color 0.3s;
+}
+
+/* About Me Section */
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 191, 255, 0.3);
+}
+
+.about-content {
+    flex: 2;
+    min-width: 300px;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.highlight {
+    color: #00bfff;
+    font-weight: bold;
+}
+
+/* Cards Layout */
+.cards-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    width: 45%;
+    min-width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 191, 255, 0.4);
+}
+
+.card-icon {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #00bfff;
+}
+
+.card h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+    transition: color 0.3s;
+}
+
+.card-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.card-list li {
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.card-list li::before {
+    content: '•';
+    color: #00bfff;
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+}
+
+/* Action Button */
+.action-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 30px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+}
+
+.action-btn:hover {
+    background-color: #0099cc;
+    transform: translateY(-3px);
+}
+
+.center-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Footer Nav */
+.bottom-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: rgba(26, 26, 46, 0.8);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.nav-item {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #24245d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: #00bfff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .card {
+        width: 100%;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.float-animation {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Contact Section Styles */
+.contact-section {
+    margin: 100px auto 150px;
+    text-align: center;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 40px auto;
+    gap: 20px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    transition: background-color 0.3s;
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.contact-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: #00bfff;
+}
+
+.contact-card h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.contact-card p {
+    margin: 5px 0;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.contact-link {
+    color: #00bfff;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.contact-link:hover {
+    color: #0099cc;
+}
+
+.contact-form {
+    flex: 1.5;
+    min-width: 300px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.5);
+}
+
+.form-control::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+    transition: color 0.3s;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
+}
+
+.submit-btn:hover {
+    background-color: #0099cc;
+    transform: translateY(-3px);
+}
+
+.wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-info, .contact-form {
+        width: 100%;
+    }
+}
+
+/* Dark Mode Toggle */
+.mode-toggle {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    transition: transform 0.3s ease;
+    z-index: 200;
+}
+
+.mode-toggle:hover {
+    transform: scale(1.1);
+}
+
+.mode-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+.dark-mode .mode-toggle .sun {
+    display: block;
+}
+
+.dark-mode .mode-toggle .moon {
+    display: none;
+}
+
+.mode-toggle .sun {
+    display: none;
+}
+
+.mode-toggle .moon {
+    display: block;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #1a1a2e;
+    color: #f7f7f7;
+}
+
+.dark-mode .logo {
+    color: #fff;
+}
+
+.dark-mode .nav-links a {
+    color: #fff;
+}
+
+.dark-mode h1 {
+    color: #fff;
+}
+
+.dark-mode .about-content p {
+    color: #ddd;
+}
+
+.dark-mode .card {
+    background-color: rgba(36, 36, 93, 0.7);
+}
+
+.dark-mode .card h2 {
+    color: #fff;
+}
+
+.dark-mode .card-list li {
+    color: #ddd;
+}
+
+.dark-mode .contact-card {
+    background-color: rgba(36, 36, 93, 0.8);
+}
+
+.dark-mode .contact-card h3 {
+    color: #fff;
+}
+
+.dark-mode .contact-card p {
+    color: #ccc;
+}
+
+.dark-mode .form-control {
+    background-color: rgba(36, 36, 93, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.dark-mode .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Basketball Game Styles */
+.game-section {
+    margin: 60px auto;
+    text-align: center;
+}
+
+.game-container {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: background-color 0.3s;
+}
+
+.dark-mode .game-container {
+    background-color: #24245d;
+}
+
+.basket {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    width: 70px;
+    height: 50px;
+    border-bottom: 6px solid #ff5500;
+    border-left: 6px solid #ff5500;
+    border-right: 6px solid #ff5500;
+    border-radius: 0 0 50% 50%;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.backboard {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 15px;
+    height: 60px;
+    background-color: #666;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.backboard::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: -65px;
+    width: 80px;
+    height: 50px;
+    background-color: #fff;
+    border: 2px solid #666;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: -1;
+}
+
+.backboard::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: -45px;
+    width: 40px;
+    height: 30px;
+    border: 2px solid #00bfff;
+    z-index: -1;
+}
+
+.net {
+    display: none;
+}
+
+.ball {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 15px 15px, #ff7b24, #d85500);
+    border-radius: 50%;
+    cursor: grab;
+    transition: transform 0.2s;
+    z-index: 10;
+    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.3), 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.ball-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.ball-lines::before,
+.ball-lines::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.ball-lines::before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+.ball-lines::after {
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    transform: translateX(-50%);
+}
+
+/* Adding additional line for basketball */
+.ball::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transform: rotateZ(60deg);
+}
+
+.ball::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transform: rotateZ(-60deg);
+}
+
+.floor {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #a5670f;
+}
+
+.trajectory {
+    position: absolute;
+    background-color: rgba(255, 107, 0, 0.2);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.score-display {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.dark-mode .score-display {
+    color: #fff;
+}
+
+.game-instructions {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: color 0.3s;
+}
+
+.dark-mode .game-instructions {
+    color: #ccc;
+}
+
+.game-controls {
+    margin-top: 15px;
+}
+
+.game-button {
+    padding: 8px 15px;
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    margin: 0 5px;
+}
+
+.game-button:hover {
+    background-color: #0099cc;
+} 
