@@ -165,10 +165,11 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    bottom: 20px;
+    position: fixed;
+    bottom: 80px;
     right: 20px;
     transition: transform 0.3s ease;
+    z-index: 200;
 }
 
 .mode-toggle:hover {
@@ -176,8 +177,8 @@ p {
 }
 
 .mode-toggle svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 .dark-mode .mode-toggle .sun {
