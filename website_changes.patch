@@ -1,0 +1,2141 @@
+From 173fdc9d62b45850b25b937b44fc8e8b9ffc7bf5 Mon Sep 17 00:00:00 2001
+From: Your Name <your.email@example.com>
+Date: Tue, 27 May 2025 20:06:43 +0530
+Subject: [PATCH] Reorganized website with proper directory structure and
+ separated CSS/JS files
+
+---
+ about.html                                    | 139 +++-
+ assets/css/main.css                           | 223 +++++
+ assets/css/styles.css                         | 760 ++++++++++++++++++
+ 1.png => assets/images/1.png                  | Bin
+ .../images/akshaay_user.jpeg                  | Bin
+ .../images/applemusic.png                     | Bin
+ at.png => assets/images/at.png                | Bin
+ .../images/basketball.png                     | Bin
+ .../images/basketball_2.png                   | Bin
+ .../images/brightness-and-contrast.png        | Bin
+ .../images/crytic_crossword.jpg               | Bin
+ facebook.png => assets/images/facebook.png    | Bin
+ github.png => assets/images/github.png        | Bin
+ hacker.png => assets/images/hacker.png        | Bin
+ ig.png => assets/images/ig.png                | Bin
+ image.jpeg => assets/images/image.jpeg        | Bin
+ instagram.png => assets/images/instagram.png  | Bin
+ itunes.png => assets/images/itunes.png        | Bin
+ .../images/linkedin-logo.png                  | Bin
+ .../images/night-mode.png                     | Bin
+ profile_2.jpg => assets/images/profile_2.jpg  | Bin
+ search.png => assets/images/search.png        | Bin
+ spotify.png => assets/images/spotify.png      | Bin
+ tree_1.png => assets/images/tree_1.png        | Bin
+ twitter_1.png => assets/images/twitter_1.png  | Bin
+ assets/js/main/main.js                        |  63 ++
+ assets/js/script.js                           | 267 ++++++
+ blog.html                                     |  55 ++
+ index.html                                    | 356 ++------
+ resume.html                                   |  56 ++
+ 30 files changed, 1607 insertions(+), 312 deletions(-)
+ create mode 100644 assets/css/main.css
+ create mode 100644 assets/css/styles.css
+ rename 1.png => assets/images/1.png (100%)
+ rename akshaay_user.jpeg => assets/images/akshaay_user.jpeg (100%)
+ rename applemusic.png => assets/images/applemusic.png (100%)
+ rename at.png => assets/images/at.png (100%)
+ rename basketball.png => assets/images/basketball.png (100%)
+ rename basketball_2.png => assets/images/basketball_2.png (100%)
+ rename brightness-and-contrast.png => assets/images/brightness-and-contrast.png (100%)
+ rename crytic_crossword.jpg => assets/images/crytic_crossword.jpg (100%)
+ rename facebook.png => assets/images/facebook.png (100%)
+ rename github.png => assets/images/github.png (100%)
+ rename hacker.png => assets/images/hacker.png (100%)
+ rename ig.png => assets/images/ig.png (100%)
+ rename image.jpeg => assets/images/image.jpeg (100%)
+ rename instagram.png => assets/images/instagram.png (100%)
+ rename itunes.png => assets/images/itunes.png (100%)
+ rename linkedin-logo.png => assets/images/linkedin-logo.png (100%)
+ rename night-mode.png => assets/images/night-mode.png (100%)
+ rename profile_2.jpg => assets/images/profile_2.jpg (100%)
+ rename search.png => assets/images/search.png (100%)
+ rename spotify.png => assets/images/spotify.png (100%)
+ rename tree_1.png => assets/images/tree_1.png (100%)
+ rename twitter_1.png => assets/images/twitter_1.png (100%)
+ create mode 100644 assets/js/main/main.js
+ create mode 100644 assets/js/script.js
+ create mode 100644 resume.html
+
+diff --git a/about.html b/about.html
+index c1b0730..e22ebc9 100644
+--- a/about.html
++++ b/about.html
+@@ -1 +1,138 @@
+-x
+\ No newline at end of file
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>About - Akshaay Kumar</title>
++    <link rel="icon" href="assets/images/tree_1.png" type="image/png">
++    <link rel="stylesheet" href="assets/css/styles.css">
++</head>
++<body>
++    <!-- Navigation -->
++    <a href="index.html" class="logo">Akshaay Kumar</a>
++    <div class="top-nav">
++        <div class="nav-links">
++            <a href="index.html">Home</a>
++            <a href="about.html" class="current">About</a>
++            <a href="blog.html">Blog</a>
++            <a href="resume.html">Resume</a>
++        </div>
++    </div>
++
++    <!-- Main Content -->
++    <div class="container">
++        <div class="header">
++            <p class="section-title">ABOUT ME</p>
++            <h1>About Me</h1>
++        </div>
++
++        <!-- About Section -->
++        <div class="about-container">
++            <div class="about-image">
++                <img src="assets/images/image.jpeg" alt="Akshaay Kumar">
++            </div>
++            <div class="about-content">
++                <p>Hey there! I'm <span class="highlight">Akshaay</span>, a tech explorer navigating the exciting waters of AI and innovation. When I'm not deep-diving into code or experimenting with the latest technologies, you'll find me strategizing my next move in chess or attempting to perfect my jump shot on the basketball court.</p>
++                <p>I'm all about approaching life with curiosity and energy - whether that's untangling complex algorithms or discovering new music that gets me through those late-night coding sessions.</p>
++                <p>Let's connect and build something awesome together!</p>
++            </div>
++        </div>
++
++        <!-- Cards Section -->
++        <div class="cards-section">
++            <!-- Education Card -->
++            <div class="card">
++                <div class="card-icon">🎓</div>
++                <h2>Education</h2>
++                <ul class="card-list">
++                    <li>Metallurgical and Materials Engineering</li>
++                    <li>Graduated: 2025</li>
++                    <li>Relevant Coursework: Algorithms, Data Structures, Machine Learning</li>
++                </ul>
++            </div>
++
++            <!-- Skills Card -->
++            <div class="card">
++                <div class="card-icon">💻</div>
++                <h2>Skills</h2>
++                <ul class="card-list">
++                    <li>Programming Languages: Python, JavaScript, Java</li>
++                    <li>Web Development: HTML, CSS, React</li>
++                    <li>Tools & Technologies: Git, Docker, AWS</li>
++                    <li>Problem Solving & Analytical Thinking</li>
++                </ul>
++            </div>
++        </div>
++
++        <!-- Basketball Game Section -->
++        <div class="game-section">
++            <h2>Basketball Challenge</h2>
++            <div class="game-container">
++                <div class="backboard"></div>
++                <div class="basket"></div>
++                <div class="ball">
++                    <div class="ball-lines"></div>
++                </div>
++                <div class="floor"></div>
++            </div>
++            <div class="score-display">Score: 0</div>
++            <div class="game-instructions">Click and drag the ball, then release to shoot! Try to get the ball through the hoop.</div>
++            <div class="game-controls">
++                <button class="game-button reset-button">Reset Game</button>
++            </div>
++        </div>
++
++        <!-- Contact Section -->
++        <div class="contact-section">
++            <p class="section-title">GET IN TOUCH</p>
++            <h1>Contact Me</h1>
++            <div class="contact-container">
++                <div class="contact-info">
++                    <div class="contact-card">
++                        <div class="contact-icon">
++                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
++                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
++                            </svg>
++                        </div>
++                        <h3>Email</h3>
++                        <p>info@akshaay.com</p>
++                        <a href="mailto:info@akshaay.com" class="contact-link">Send a message</a>
++                    </div>
++                </div>
++                <div class="contact-form">
++                    <div class="form-group">
++                        <input type="text" class="form-control" placeholder="Your Name">
++                    </div>
++                    <div class="form-group">
++                        <input type="email" class="form-control" placeholder="Your Email">
++                    </div>
++                    <div class="form-group">
++                        <textarea class="form-control" placeholder="Your Message"></textarea>
++                    </div>
++                    <button class="submit-btn">Send Message</button>
++                </div>
++            </div>
++        </div>
++    </div>
++
++    <!-- Dark Mode Toggle -->
++    <button class="mode-toggle" aria-label="Toggle dark/light mode">
++        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
++            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
++        </svg>
++        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
++            <circle cx="12" cy="12" r="5"></circle>
++            <line x1="12" y1="1" x2="12" y2="3"></line>
++            <line x1="12" y1="21" x2="12" y2="23"></line>
++            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
++            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
++            <line x1="1" y1="12" x2="3" y2="12"></line>
++            <line x1="21" y1="12" x2="23" y2="12"></line>
++            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
++            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
++        </svg>
++    </button>
++
++    <script src="assets/js/script.js"></script>
++</body>
++</html>
+\ No newline at end of file
+diff --git a/assets/css/main.css b/assets/css/main.css
+new file mode 100644
+index 0000000..b31a07c
+--- /dev/null
++++ b/assets/css/main.css
+@@ -0,0 +1,223 @@
++body {
++    font-family: Arial, sans-serif;
++    background-color: #f7f7f7;
++    color: #333;
++    margin: 0;
++    padding: 0;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    height: 100vh;
++    width: 100vw;
++    overflow: hidden;
++    transition: background-color 0.3s, color 0.3s;
++}
++
++.container {
++    text-align: center;
++    background-color: white;
++    padding: 40px;
++    border-radius: 10px;
++    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
++    width: 100%;
++    height: 100%;
++    display: flex;
++    flex-direction: column;
++    align-items: center;
++    justify-content: center;
++    box-sizing: border-box;
++    position: relative;
++    transition: background-color 0.3s, color 0.3s;
++}
++
++.profile-pic {
++    width: 275px;
++    height: 275px;
++    border-radius: 50%;
++    object-fit: cover;
++    margin-bottom: 20px;
++    transition: transform 0.3s;
++}
++
++.profile-pic:hover {
++    transform: scale(1.1);
++}
++
++h1 {
++    font-size: 36px;
++    color: #333;
++    margin: 1px 0;
++    font-weight: bold;
++}
++
++p {
++    font-size: 17px;
++    color: #666;
++    margin-bottom: 20px;
++}
++
++.social-icons {
++    margin-bottom: 30px;
++}
++
++.social-icons img {
++    width: 22px;
++    height: 22px;
++    margin: 0 8px;
++    cursor: pointer;
++    transition: filter 0.3s;
++}
++
++.social-icons img:active {
++    filter: hue-rotate(180deg) saturate(300%) brightness(0.7);
++}
++
++.top-right-container {
++    position: absolute;
++    top: 20px;
++    right: 20px;
++    display: flex;
++    align-items: center;
++}
++
++.search-box {
++    position: relative;
++    display: none;
++    align-items: center;
++    transition: width 0.3s ease;
++}
++
++.search-box input[type="text"] {
++    font-size: 14px;
++    padding: 8px 12px;
++    border: 1px solid #ccc;
++    border-radius: 5px;
++    width: 200px;
++    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
++    transition: transform 0.3s ease;
++}
++
++.search-box button {
++    padding: 8px 10px;
++    font-size: 14px;
++    cursor: pointer;
++    border: 1px solid #ccc;
++    border-radius: 5px;
++    margin-left: 5px;
++    background-color: #f7f7f7;
++}
++
++.search-icon {
++    cursor: pointer;
++    margin-right: 8px;
++    width: 17px;
++    height: 17px;
++    transition: transform 0.3s ease, filter 0.3s ease;
++}
++
++.search-icon:hover {
++    transform: scale(1.2);
++    filter: brightness(0.8);
++}
++
++.links {
++    display: flex;
++    align-items: center;
++    margin-right: 15px;
++}
++
++.links a {
++    font-size: 14px;
++    color: #333;
++    text-decoration: none;
++    margin: 0 8px;
++    padding: 8px 12px;
++    border-radius: 5px;
++    position: relative;
++    transition: color 0.3s;
++}
++
++.links a::after {
++    content: '';
++    position: absolute;
++    width: 0;
++    height: 3px;
++    display: block;
++    margin-top: 5px;
++    right: 0;
++    background: rgb(0, 128, 85);
++    transition: width 0.3s ease;
++}
++
++.links a:hover::after {
++    width: 100%;
++    left: 0;
++    background: rgb(0, 113, 128);
++}
++
++.mode-toggle {
++    width: 30px;
++    height: 30px;
++    cursor: pointer;
++    background-color: transparent;
++    border: none;
++    padding: 0;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    position: absolute;
++    bottom: 20px;
++    right: 20px;
++    transition: transform 0.3s ease;
++}
++
++.mode-toggle:hover {
++    transform: scale(1.1);
++}
++
++.mode-toggle svg {
++    width: 20px;
++    height: 20px;
++}
++
++.dark-mode .mode-toggle .sun {
++    display: block;
++}
++
++.dark-mode .mode-toggle .moon {
++    display: none;
++}
++
++.mode-toggle .sun {
++    display: none;
++}
++
++.mode-toggle .moon {
++    display: block;
++}
++
++.dark-mode {
++    background-color: #333;
++    color: #f7f7f7;
++}
++
++.dark-mode .container {
++    background-color: #444;
++    color: #f7f7f7;
++}
++
++.dark-mode h1 {
++    color: white;
++}
++
++.dark-mode .links a {
++    color: #f7f7f7;
++}
++
++.dark-mode .social-icons img {
++    filter: invert(100%);
++}
++
++.highlight {
++    background-color: yellow;
++} 
+\ No newline at end of file
+diff --git a/assets/css/styles.css b/assets/css/styles.css
+new file mode 100644
+index 0000000..2b31e7a
+--- /dev/null
++++ b/assets/css/styles.css
+@@ -0,0 +1,760 @@
++body {
++    font-family: Arial, sans-serif;
++    background-color: #f7f7f7;
++    color: #333;
++    margin: 0;
++    padding: 0;
++    min-height: 100vh;
++    overflow-x: hidden;
++    position: relative;
++    transition: background-color 0.3s, color 0.3s;
++}
++
++/* Space background decoration */
++body::before {
++    content: '';
++    position: absolute;
++    top: 0;
++    left: 0;
++    right: 0;
++    bottom: 0;
++    background: none;
++    z-index: -1;
++    pointer-events: none;
++}
++
++/* Navigation - Updated to match main page */
++.top-nav {
++    position: absolute;
++    top: 20px;
++    right: 20px;
++    display: flex;
++    align-items: center;
++    z-index: 10;
++}
++
++.logo {
++    font-size: 24px;
++    font-weight: bold;
++    color: #333;
++    text-decoration: none;
++    position: absolute;
++    top: 20px;
++    left: 20px;
++    transition: color 0.3s;
++}
++
++.nav-links {
++    display: flex;
++    align-items: center;
++}
++
++.nav-links a {
++    font-size: 14px;
++    color: #333;
++    text-decoration: none;
++    margin: 0 8px;
++    padding: 8px 12px;
++    border-radius: 5px;
++    position: relative;
++    transition: color 0.3s;
++    font-weight: bold;
++}
++
++.nav-links a::after {
++    content: '';
++    position: absolute;
++    width: 0;
++    height: 3px;
++    display: block;
++    margin-top: 5px;
++    right: 0;
++    background: #00bfff;
++    transition: width 0.3s ease;
++}
++
++.nav-links a:hover::after {
++    width: 100%;
++    left: 0;
++}
++
++/* Style for current page indicator */
++.nav-links a.current::after {
++    width: 100%;
++    left: 0;
++}
++
++/* Main Content */
++.container {
++    max-width: 1200px;
++    margin: 0 auto;
++    padding: 40px 20px;
++}
++
++.header {
++    text-align: center;
++    margin-bottom: 60px;
++}
++
++.section-title {
++    color: #00bfff;
++    margin-bottom: 10px;
++    font-size: 18px;
++    text-transform: uppercase;
++    letter-spacing: 2px;
++}
++
++h1 {
++    font-size: 38px;
++    margin: 10px 0;
++    color: #333;
++    transition: color 0.3s;
++}
++
++/* About Me Section */
++.about-container {
++    display: flex;
++    flex-wrap: wrap;
++    gap: 40px;
++    align-items: center;
++    margin-bottom: 80px;
++}
++
++.about-image {
++    flex: 1;
++    min-width: 300px;
++    position: relative;
++}
++
++.about-image img {
++    width: 100%;
++    max-width: 400px;
++    border-radius: 10px;
++    box-shadow: 0 5px 25px rgba(0, 191, 255, 0.3);
++}
++
++.about-content {
++    flex: 2;
++    min-width: 300px;
++}
++
++.about-content p {
++    font-size: 18px;
++    line-height: 1.6;
++    margin-bottom: 20px;
++    color: #555;
++    transition: color 0.3s;
++}
++
++.highlight {
++    color: #00bfff;
++    font-weight: bold;
++}
++
++/* Cards Layout */
++.cards-section {
++    display: flex;
++    flex-wrap: wrap;
++    justify-content: center;
++    gap: 30px;
++    margin-bottom: 60px;
++}
++
++.card {
++    background-color: white;
++    border-radius: 10px;
++    padding: 30px;
++    width: 45%;
++    min-width: 300px;
++    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
++    position: relative;
++    overflow: hidden;
++    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
++}
++
++.card:hover {
++    transform: translateY(-10px);
++    box-shadow: 0 10px 25px rgba(0, 191, 255, 0.4);
++}
++
++.card-icon {
++    margin-bottom: 20px;
++    font-size: 28px;
++    color: #00bfff;
++}
++
++.card h2 {
++    color: #333;
++    margin-bottom: 20px;
++    font-size: 28px;
++    transition: color 0.3s;
++}
++
++.card-list {
++    margin: 0;
++    padding: 0;
++    list-style-type: none;
++}
++
++.card-list li {
++    margin-bottom: 12px;
++    padding-left: 20px;
++    position: relative;
++    font-size: 16px;
++    line-height: 1.5;
++    color: #555;
++    transition: color 0.3s;
++}
++
++.card-list li::before {
++    content: '•';
++    color: #00bfff;
++    position: absolute;
++    left: 0;
++    font-size: 20px;
++}
++
++/* Action Button */
++.action-btn {
++    display: inline-block;
++    padding: 12px 24px;
++    background-color: #00bfff;
++    color: white;
++    border: none;
++    border-radius: 50px;
++    cursor: pointer;
++    font-size: 16px;
++    font-weight: bold;
++    text-decoration: none;
++    text-align: center;
++    margin-top: 30px;
++    transition: background-color 0.3s, transform 0.3s;
++    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
++}
++
++.action-btn:hover {
++    background-color: #0099cc;
++    transform: translateY(-3px);
++}
++
++.center-btn {
++    display: flex;
++    justify-content: center;
++    margin-top: 20px;
++}
++
++/* Footer Nav */
++.bottom-nav {
++    display: flex;
++    justify-content: center;
++    gap: 15px;
++    padding: 20px;
++    background-color: rgba(26, 26, 46, 0.8);
++    position: fixed;
++    bottom: 0;
++    left: 0;
++    right: 0;
++    z-index: 100;
++}
++
++.nav-item {
++    width: 40px;
++    height: 40px;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    border-radius: 50%;
++    background-color: #24245d;
++    cursor: pointer;
++    transition: background-color 0.3s;
++}
++
++.nav-item:hover, .nav-item.active {
++    background-color: #00bfff;
++}
++
++/* Responsive Design */
++@media (max-width: 768px) {
++    .about-container {
++        flex-direction: column;
++        text-align: center;
++    }
++    
++    .card {
++        width: 100%;
++    }
++    
++    .nav-links {
++        display: none;
++    }
++}
++
++/* Animation */
++@keyframes float {
++    0% { transform: translateY(0px); }
++    50% { transform: translateY(-10px); }
++    100% { transform: translateY(0px); }
++}
++
++.float-animation {
++    animation: float 4s ease-in-out infinite;
++}
++
++/* Contact Section Styles */
++.contact-section {
++    margin: 100px auto 150px;
++    text-align: center;
++}
++
++.contact-container {
++    display: flex;
++    flex-wrap: wrap;
++    justify-content: space-between;
++    max-width: 1000px;
++    margin: 40px auto;
++    gap: 20px;
++}
++
++.contact-info {
++    flex: 1;
++    min-width: 250px;
++    display: flex;
++    justify-content: center;
++}
++
++.contact-card {
++    background-color: white;
++    border-radius: 10px;
++    padding: 30px;
++    margin-bottom: 20px;
++    display: flex;
++    flex-direction: column;
++    align-items: center;
++    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
++    width: 100%;
++    max-width: 300px;
++    transition: background-color 0.3s;
++}
++
++.contact-icon {
++    width: 40px;
++    height: 40px;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    margin-bottom: 15px;
++}
++
++.contact-icon svg {
++    width: 28px;
++    height: 28px;
++    stroke: #00bfff;
++}
++
++.contact-card h3 {
++    margin: 10px 0;
++    font-size: 20px;
++    color: #333;
++    transition: color 0.3s;
++}
++
++.contact-card p {
++    margin: 5px 0;
++    color: #666;
++    transition: color 0.3s;
++}
++
++.contact-link {
++    color: #00bfff;
++    text-decoration: none;
++    margin-top: 10px;
++    display: inline-block;
++    font-size: 14px;
++    transition: color 0.3s;
++}
++
++.contact-link:hover {
++    color: #0099cc;
++}
++
++.contact-form {
++    flex: 1.5;
++    min-width: 300px;
++}
++
++.form-group {
++    margin-bottom: 20px;
++}
++
++.form-control {
++    width: 100%;
++    padding: 15px;
++    border-radius: 8px;
++    border: 1px solid rgba(0, 0, 0, 0.1);
++    background-color: #f8f9fa;
++    color: #333;
++    font-size: 16px;
++    box-sizing: border-box;
++    transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
++}
++
++.form-control:focus {
++    outline: none;
++    box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.5);
++}
++
++.form-control::placeholder {
++    color: rgba(0, 0, 0, 0.4);
++    transition: color 0.3s;
++}
++
++textarea.form-control {
++    min-height: 150px;
++    resize: vertical;
++}
++
++.submit-btn {
++    background-color: #00bfff;
++    color: white;
++    border: none;
++    padding: 12px 30px;
++    font-size: 16px;
++    border-radius: 50px;
++    cursor: pointer;
++    transition: background-color 0.3s, transform 0.3s;
++    font-weight: bold;
++    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
++}
++
++.submit-btn:hover {
++    background-color: #0099cc;
++    transform: translateY(-3px);
++}
++
++.wave-container {
++    position: absolute;
++    bottom: 0;
++    left: 0;
++    width: 100%;
++    overflow: hidden;
++    line-height: 0;
++    transform: rotate(180deg);
++    z-index: -1;
++}
++
++@media (max-width: 768px) {
++    .contact-container {
++        flex-direction: column;
++    }
++    
++    .contact-info, .contact-form {
++        width: 100%;
++    }
++}
++
++/* Dark Mode Toggle */
++.mode-toggle {
++    width: 30px;
++    height: 30px;
++    cursor: pointer;
++    background-color: transparent;
++    border: none;
++    padding: 0;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    position: fixed;
++    bottom: 80px;
++    right: 20px;
++    transition: transform 0.3s ease;
++    z-index: 200;
++}
++
++.mode-toggle:hover {
++    transform: scale(1.1);
++}
++
++.mode-toggle svg {
++    width: 24px;
++    height: 24px;
++}
++
++.dark-mode .mode-toggle .sun {
++    display: block;
++}
++
++.dark-mode .mode-toggle .moon {
++    display: none;
++}
++
++.mode-toggle .sun {
++    display: none;
++}
++
++.mode-toggle .moon {
++    display: block;
++}
++
++/* Dark Mode Styles */
++.dark-mode {
++    background-color: #1a1a2e;
++    color: #f7f7f7;
++}
++
++.dark-mode .logo {
++    color: #fff;
++}
++
++.dark-mode .nav-links a {
++    color: #fff;
++}
++
++.dark-mode h1 {
++    color: #fff;
++}
++
++.dark-mode .about-content p {
++    color: #ddd;
++}
++
++.dark-mode .card {
++    background-color: rgba(36, 36, 93, 0.7);
++}
++
++.dark-mode .card h2 {
++    color: #fff;
++}
++
++.dark-mode .card-list li {
++    color: #ddd;
++}
++
++.dark-mode .contact-card {
++    background-color: rgba(36, 36, 93, 0.8);
++}
++
++.dark-mode .contact-card h3 {
++    color: #fff;
++}
++
++.dark-mode .contact-card p {
++    color: #ccc;
++}
++
++.dark-mode .form-control {
++    background-color: rgba(36, 36, 93, 0.5);
++    border: 1px solid rgba(255, 255, 255, 0.1);
++    color: white;
++}
++
++.dark-mode .form-control::placeholder {
++    color: rgba(255, 255, 255, 0.6);
++}
++
++/* Basketball Game Styles */
++.game-section {
++    margin: 60px auto;
++    text-align: center;
++}
++
++.game-container {
++    position: relative;
++    width: 300px;
++    height: 400px;
++    margin: 0 auto;
++    background-color: #f0f8ff;
++    border-radius: 10px;
++    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
++    overflow: hidden;
++    transition: background-color 0.3s;
++}
++
++.dark-mode .game-container {
++    background-color: #24245d;
++}
++
++.basket {
++    position: absolute;
++    top: 50px;
++    right: 30px;
++    width: 70px;
++    height: 50px;
++    border-bottom: 6px solid #ff5500;
++    border-left: 6px solid #ff5500;
++    border-right: 6px solid #ff5500;
++    border-radius: 0 0 50% 50%;
++    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
++}
++
++.backboard {
++    position: absolute;
++    top: 10px;
++    right: 15px;
++    width: 15px;
++    height: 60px;
++    background-color: #666;
++    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
++}
++
++.backboard::before {
++    content: '';
++    position: absolute;
++    top: 10px;
++    right: -65px;
++    width: 80px;
++    height: 50px;
++    background-color: #fff;
++    border: 2px solid #666;
++    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
++    z-index: -1;
++}
++
++.backboard::after {
++    content: '';
++    position: absolute;
++    top: 30px;
++    right: -45px;
++    width: 40px;
++    height: 30px;
++    border: 2px solid #00bfff;
++    z-index: -1;
++}
++
++.net {
++    display: none;
++}
++
++.ball {
++    position: absolute;
++    bottom: 40px;
++    left: 40px;
++    width: 40px;
++    height: 40px;
++    background: radial-gradient(circle at 15px 15px, #ff7b24, #d85500);
++    border-radius: 50%;
++    cursor: grab;
++    transition: transform 0.2s;
++    z-index: 10;
++    box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.3), 0 2px 3px rgba(0, 0, 0, 0.2);
++}
++
++.ball-lines {
++    position: absolute;
++    top: 0;
++    left: 0;
++    width: 100%;
++    height: 100%;
++    border-radius: 50%;
++    overflow: hidden;
++}
++
++.ball-lines::before,
++.ball-lines::after {
++    content: '';
++    position: absolute;
++    background-color: rgba(0, 0, 0, 0.3);
++}
++
++.ball-lines::before {
++    top: 50%;
++    left: 0;
++    width: 100%;
++    height: 2px;
++    transform: translateY(-50%);
++}
++
++.ball-lines::after {
++    top: 0;
++    left: 50%;
++    width: 2px;
++    height: 100%;
++    transform: translateX(-50%);
++}
++
++/* Adding additional line for basketball */
++.ball::before {
++    content: '';
++    position: absolute;
++    top: 20px;
++    left: 0;
++    width: 40px;
++    height: 2px;
++    background-color: rgba(0, 0, 0, 0.3);
++    border-radius: 50%;
++    transform: rotateZ(60deg);
++}
++
++.ball::after {
++    content: '';
++    position: absolute;
++    top: 20px;
++    left: 0;
++    width: 40px;
++    height: 2px;
++    background-color: rgba(0, 0, 0, 0.3);
++    border-radius: 50%;
++    transform: rotateZ(-60deg);
++}
++
++.floor {
++    position: absolute;
++    bottom: 0;
++    width: 100%;
++    height: 30px;
++    background-color: #a5670f;
++}
++
++.trajectory {
++    position: absolute;
++    background-color: rgba(255, 107, 0, 0.2);
++    width: 10px;
++    height: 10px;
++    border-radius: 50%;
++    opacity: 0;
++}
++
++.score-display {
++    margin-top: 10px;
++    font-size: 24px;
++    font-weight: bold;
++    color: #333;
++    transition: color 0.3s;
++}
++
++.dark-mode .score-display {
++    color: #fff;
++}
++
++.game-instructions {
++    margin-top: 15px;
++    font-size: 14px;
++    color: #666;
++    max-width: 300px;
++    margin-left: auto;
++    margin-right: auto;
++    transition: color 0.3s;
++}
++
++.dark-mode .game-instructions {
++    color: #ccc;
++}
++
++.game-controls {
++    margin-top: 15px;
++}
++
++.game-button {
++    padding: 8px 15px;
++    background-color: #00bfff;
++    color: white;
++    border: none;
++    border-radius: 5px;
++    cursor: pointer;
++    font-size: 14px;
++    transition: background-color 0.3s;
++    margin: 0 5px;
++}
++
++.game-button:hover {
++    background-color: #0099cc;
++} 
+\ No newline at end of file
+diff --git a/1.png b/assets/images/1.png
+similarity index 100%
+rename from 1.png
+rename to assets/images/1.png
+diff --git a/akshaay_user.jpeg b/assets/images/akshaay_user.jpeg
+similarity index 100%
+rename from akshaay_user.jpeg
+rename to assets/images/akshaay_user.jpeg
+diff --git a/applemusic.png b/assets/images/applemusic.png
+similarity index 100%
+rename from applemusic.png
+rename to assets/images/applemusic.png
+diff --git a/at.png b/assets/images/at.png
+similarity index 100%
+rename from at.png
+rename to assets/images/at.png
+diff --git a/basketball.png b/assets/images/basketball.png
+similarity index 100%
+rename from basketball.png
+rename to assets/images/basketball.png
+diff --git a/basketball_2.png b/assets/images/basketball_2.png
+similarity index 100%
+rename from basketball_2.png
+rename to assets/images/basketball_2.png
+diff --git a/brightness-and-contrast.png b/assets/images/brightness-and-contrast.png
+similarity index 100%
+rename from brightness-and-contrast.png
+rename to assets/images/brightness-and-contrast.png
+diff --git a/crytic_crossword.jpg b/assets/images/crytic_crossword.jpg
+similarity index 100%
+rename from crytic_crossword.jpg
+rename to assets/images/crytic_crossword.jpg
+diff --git a/facebook.png b/assets/images/facebook.png
+similarity index 100%
+rename from facebook.png
+rename to assets/images/facebook.png
+diff --git a/github.png b/assets/images/github.png
+similarity index 100%
+rename from github.png
+rename to assets/images/github.png
+diff --git a/hacker.png b/assets/images/hacker.png
+similarity index 100%
+rename from hacker.png
+rename to assets/images/hacker.png
+diff --git a/ig.png b/assets/images/ig.png
+similarity index 100%
+rename from ig.png
+rename to assets/images/ig.png
+diff --git a/image.jpeg b/assets/images/image.jpeg
+similarity index 100%
+rename from image.jpeg
+rename to assets/images/image.jpeg
+diff --git a/instagram.png b/assets/images/instagram.png
+similarity index 100%
+rename from instagram.png
+rename to assets/images/instagram.png
+diff --git a/itunes.png b/assets/images/itunes.png
+similarity index 100%
+rename from itunes.png
+rename to assets/images/itunes.png
+diff --git a/linkedin-logo.png b/assets/images/linkedin-logo.png
+similarity index 100%
+rename from linkedin-logo.png
+rename to assets/images/linkedin-logo.png
+diff --git a/night-mode.png b/assets/images/night-mode.png
+similarity index 100%
+rename from night-mode.png
+rename to assets/images/night-mode.png
+diff --git a/profile_2.jpg b/assets/images/profile_2.jpg
+similarity index 100%
+rename from profile_2.jpg
+rename to assets/images/profile_2.jpg
+diff --git a/search.png b/assets/images/search.png
+similarity index 100%
+rename from search.png
+rename to assets/images/search.png
+diff --git a/spotify.png b/assets/images/spotify.png
+similarity index 100%
+rename from spotify.png
+rename to assets/images/spotify.png
+diff --git a/tree_1.png b/assets/images/tree_1.png
+similarity index 100%
+rename from tree_1.png
+rename to assets/images/tree_1.png
+diff --git a/twitter_1.png b/assets/images/twitter_1.png
+similarity index 100%
+rename from twitter_1.png
+rename to assets/images/twitter_1.png
+diff --git a/assets/js/main/main.js b/assets/js/main/main.js
+new file mode 100644
+index 0000000..61ab2e6
+--- /dev/null
++++ b/assets/js/main/main.js
+@@ -0,0 +1,63 @@
++// Toggle dark/light mode
++function toggleMode() {
++    const body = document.body;
++    const modeToggle = document.querySelector('.mode-toggle');
++    body.classList.toggle('dark-mode');
++    
++    if (body.classList.contains('dark-mode')) {
++        modeToggle.setAttribute('aria-label', 'Switch to light mode');
++        localStorage.setItem('darkMode', 'true');
++    } else {
++        modeToggle.setAttribute('aria-label', 'Switch to dark mode');
++        localStorage.setItem('darkMode', 'false');
++    }
++}
++
++// Toggle search box
++function toggleSearch() {
++    const searchBox = document.querySelector('.search-box');
++    searchBox.style.display = searchBox.style.display === 'none' || searchBox.style.display === '' ? 'flex' : 'none';
++}
++
++// Search function
++function searchContent() {
++    const query = document.getElementById('search-input').value.toLowerCase();
++    const content = document.querySelectorAll('p, h1, a');
++    
++    // Reset previous highlights
++    document.querySelectorAll('.highlight').forEach(el => {
++        const text = el.textContent;
++        el.replaceWith(text);
++    });
++    
++    if (query.length < 2) return;
++    
++    content.forEach(element => {
++        const text = element.innerText;
++        const regex = new RegExp(query, 'gi');
++        
++        if (regex.test(text)) {
++            element.innerHTML = element.innerHTML.replace(regex, match => `<span class="highlight">${match}</span>`);
++        }
++    });
++}
++
++// Check for saved dark mode preference
++document.addEventListener('DOMContentLoaded', function() {
++    const savedMode = localStorage.getItem('darkMode');
++    if (savedMode === 'true') {
++        document.body.classList.add('dark-mode');
++    }
++    
++    // Set up event listeners
++    document.querySelector('.mode-toggle').addEventListener('click', toggleMode);
++    document.querySelector('.search-icon').addEventListener('click', toggleSearch);
++    
++    const searchForm = document.querySelector('.search-box form');
++    if (searchForm) {
++        searchForm.addEventListener('submit', function(e) {
++            e.preventDefault();
++            searchContent();
++        });
++    }
++}); 
+\ No newline at end of file
+diff --git a/assets/js/script.js b/assets/js/script.js
+new file mode 100644
+index 0000000..f501db5
+--- /dev/null
++++ b/assets/js/script.js
+@@ -0,0 +1,267 @@
++// Dark Mode Toggle Functionality
++document.addEventListener('DOMContentLoaded', function() {
++    // Check for saved preference
++    const savedMode = localStorage.getItem('darkMode');
++    if (savedMode === 'true') {
++        document.body.classList.add('dark-mode');
++    }
++    
++    // Mode toggle button functionality
++    const modeToggle = document.querySelector('.mode-toggle');
++    if (modeToggle) {
++        modeToggle.addEventListener('click', function() {
++            document.body.classList.toggle('dark-mode');
++            // Save preference
++            const isDarkMode = document.body.classList.contains('dark-mode');
++            localStorage.setItem('darkMode', isDarkMode);
++        });
++    }
++    
++    // Basketball Game Logic
++    initBasketballGame();
++});
++
++// Initialize the Basketball Game
++function initBasketballGame() {
++    const ball = document.querySelector('.ball');
++    const gameContainer = document.querySelector('.game-container');
++    const scoreDisplay = document.querySelector('.score-display');
++    const resetButton = document.querySelector('.reset-button');
++    const basket = document.querySelector('.basket');
++    
++    if (!ball || !gameContainer || !scoreDisplay) return;
++    
++    let isDragging = false;
++    let startX, startY;
++    let score = 0;
++    let isShooting = false;
++    let ballInMotion = false;
++    
++    // Update score display
++    scoreDisplay.textContent = `Score: ${score}`;
++    
++    // Ball drag start
++    ball.addEventListener('mousedown', startDrag);
++    ball.addEventListener('touchstart', function(e) {
++        e.preventDefault();
++        startDrag(e.touches[0]);
++    });
++    
++    // Ball drag
++    document.addEventListener('mousemove', drag);
++    document.addEventListener('touchmove', function(e) {
++        e.preventDefault();
++        drag(e.touches[0]);
++    });
++    
++    // Ball release
++    document.addEventListener('mouseup', releaseBall);
++    document.addEventListener('touchend', releaseBall);
++    
++    // Reset button
++    if (resetButton) {
++        resetButton.addEventListener('click', resetGame);
++    }
++    
++    function startDrag(e) {
++        if (ballInMotion) return;
++        
++        isDragging = true;
++        startX = e.clientX || e.pageX;
++        startY = e.clientY || e.pageY;
++        
++        ball.style.transition = 'none';
++        ball.style.cursor = 'grabbing';
++    }
++    
++    function drag(e) {
++        if (!isDragging || ballInMotion) return;
++        
++        const x = e.clientX || e.pageX;
++        const y = e.clientY || e.pageY;
++        
++        // Calculate the distance and angle for pulling back the ball
++        const deltaX = startX - x;
++        const deltaY = startY - y;
++        
++        // Limit the pull distance
++        const distance = Math.min(Math.sqrt(deltaX * deltaX + deltaY * deltaY), 100);
++        const angle = Math.atan2(deltaY, deltaX);
++        
++        const pullX = distance * Math.cos(angle);
++        const pullY = distance * Math.sin(angle);
++        
++        // Visualize trajectory if needed
++        showTrajectory(pullX, pullY);
++        
++        // Apply transform to the ball to show it being pulled back
++        ball.style.transform = `translate(${-pullX}px, ${-pullY}px)`;
++    }
++    
++    function releaseBall() {
++        if (!isDragging || ballInMotion) return;
++        
++        isDragging = false;
++        ball.style.cursor = 'grab';
++        
++        // Get the final position of the ball when released
++        const ballRect = ball.getBoundingClientRect();
++        const transform = window.getComputedStyle(ball).getPropertyValue('transform');
++        const matrix = new DOMMatrix(transform);
++        
++        // Calculate the shoot velocity based on how far the ball was pulled
++        const translateX = matrix.m41;
++        const translateY = matrix.m42;
++        
++        if (Math.abs(translateX) > 5 || Math.abs(translateY) > 5) {
++            shootBall(-translateX * 0.2, -translateY * 0.2);
++        } else {
++            ball.style.transition = 'transform 0.3s';
++            ball.style.transform = 'translate(0, 0)';
++        }
++    }
++    
++    function shootBall(velocityX, velocityY) {
++        if (ballInMotion) return;
++        
++        ballInMotion = true;
++        isShooting = true;
++        
++        // Reset ball style
++        ball.style.transition = 'none';
++        
++        const ballRect = ball.getBoundingClientRect();
++        const gameContainerRect = gameContainer.getBoundingClientRect();
++        const basketRect = basket.getBoundingClientRect();
++        
++        // Initial position relative to the game container
++        let posX = ballRect.left - gameContainerRect.left + velocityX;
++        let posY = ballRect.top - gameContainerRect.top + velocityY;
++        
++        // Initial velocity and gravity
++        let vx = velocityX;
++        let vy = velocityY;
++        const gravity = 0.8;
++        
++        // Coefficient of restitution (bounciness)
++        const damping = 0.7;
++        
++        // Animation frame tracking
++        let animationFrameId;
++        
++        // Flag to check if ball went through the hoop
++        let wentThroughHoop = false;
++        let scoredThisShot = false;
++        let checkingForScore = false;
++        
++        // Initial position of the ball's center
++        const ballRadius = ballRect.width / 2;
++        const basketLeft = basketRect.left - gameContainerRect.left;
++        const basketRight = basketRect.right - gameContainerRect.left;
++        const basketTop = basketRect.top - gameContainerRect.top;
++        const basketHeight = basketRect.height;
++        
++        function updateBall() {
++            // Apply gravity
++            vy += gravity;
++            
++            // Update position
++            posX += vx;
++            posY += vy;
++            
++            // Check collisions with walls
++            if (posX < ballRadius) {
++                posX = ballRadius;
++                vx = -vx * damping;
++            } else if (posX > gameContainerRect.width - ballRadius) {
++                posX = gameContainerRect.width - ballRadius;
++                vx = -vx * damping;
++            }
++            
++            // Check if the ball is at the height of the basket rim
++            const ballCenterY = posY + ballRadius;
++            
++            // Check if the ball went through the hoop
++            // The ball should be at the height of the basket and within its horizontal bounds
++            if (!checkingForScore && 
++                ballCenterY >= basketTop && 
++                ballCenterY <= basketTop + basketHeight && 
++                posX + ballRadius >= basketLeft && 
++                posX - ballRadius <= basketRight) {
++                
++                checkingForScore = true;
++                
++                // Wait to see if the ball continues downward through the basket
++                setTimeout(() => {
++                    if (ballCenterY > basketTop + basketHeight && !scoredThisShot) {
++                        wentThroughHoop = true;
++                        score++;
++                        scoreDisplay.textContent = `Score: ${score}`;
++                        scoredThisShot = true;
++                    }
++                    checkingForScore = false;
++                }, 100);
++            }
++            
++            // Check collision with floor
++            if (posY > gameContainerRect.height - ballRadius - 30) { // 30 is floor height
++                posY = gameContainerRect.height - ballRadius - 30;
++                vy = -vy * damping;
++                
++                // If the ball is mostly stopped
++                if (Math.abs(vy) < 2) {
++                    vy = 0;
++                    
++                    // If horizontal velocity is also low, stop the animation
++                    if (Math.abs(vx) < 0.5) {
++                        vx = 0;
++                        
++                        // End the shooting sequence after a brief delay
++                        setTimeout(() => {
++                            ballInMotion = false;
++                            isShooting = false;
++                            resetBallPosition();
++                        }, 500);
++                        
++                        cancelAnimationFrame(animationFrameId);
++                        return;
++                    }
++                    
++                    // Apply friction when on the ground
++                    vx *= 0.95;
++                }
++            }
++            
++            // Update ball position
++            ball.style.left = `${posX - ballRadius}px`;
++            ball.style.top = `${posY - ballRadius}px`;
++            
++            animationFrameId = requestAnimationFrame(updateBall);
++        }
++        
++        // Start the animation
++        updateBall();
++    }
++    
++    function showTrajectory(pullX, pullY) {
++        // Placeholder for trajectory visualization
++        // Can be implemented with dots or a line showing the potential path
++    }
++    
++    function resetBallPosition() {
++        ball.style.transition = 'transform 0.5s, left 0.5s, top 0.5s';
++        ball.style.transform = 'translate(0, 0)';
++        ball.style.left = '40px';
++        ball.style.top = '';
++        ball.style.bottom = '40px';
++    }
++    
++    function resetGame() {
++        score = 0;
++        scoreDisplay.textContent = `Score: ${score}`;
++        
++        if (!ballInMotion) {
++            resetBallPosition();
++        }
++    }
++} 
+\ No newline at end of file
+diff --git a/blog.html b/blog.html
+index e69de29..2075aaa 100644
+--- a/blog.html
++++ b/blog.html
+@@ -0,0 +1,55 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Blog - Akshaay Kumar</title>
++    <link rel="icon" href="assets/images/tree_1.png" type="image/png">
++    <link rel="stylesheet" href="assets/css/styles.css">
++</head>
++<body>
++    <!-- Navigation -->
++    <a href="index.html" class="logo">Akshaay Kumar</a>
++    <div class="top-nav">
++        <div class="nav-links">
++            <a href="index.html">Home</a>
++            <a href="about.html">About</a>
++            <a href="blog.html" class="current">Blog</a>
++            <a href="resume.html">Resume</a>
++        </div>
++    </div>
++
++    <!-- Main Content -->
++    <div class="container">
++        <div class="header">
++            <p class="section-title">MY BLOG</p>
++            <h1>Blog</h1>
++        </div>
++
++        <div style="text-align: center; padding: 50px 0;">
++            <p>Blog posts coming soon!</p>
++            <p>Stay tuned for articles about technology, AI, and more.</p>
++        </div>
++    </div>
++
++    <!-- Dark Mode Toggle -->
++    <button class="mode-toggle" aria-label="Toggle dark/light mode">
++        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
++            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
++        </svg>
++        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
++            <circle cx="12" cy="12" r="5"></circle>
++            <line x1="12" y1="1" x2="12" y2="3"></line>
++            <line x1="12" y1="21" x2="12" y2="23"></line>
++            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
++            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
++            <line x1="1" y1="12" x2="3" y2="12"></line>
++            <line x1="21" y1="12" x2="23" y2="12"></line>
++            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
++            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
++        </svg>
++    </button>
++
++    <script src="assets/js/script.js"></script>
++</body>
++</html>
+diff --git a/index.html b/index.html
+index 3a8f968..b895dbc 100644
+--- a/index.html
++++ b/index.html
+@@ -4,323 +4,57 @@
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Akshaay Kumar</title>
+-    <link rel="icon" href="tree_1.png" type="image/jpeg"> <!-- Favicon added here -->
+-    <style>
+-        body {
+-            font-family: Arial, sans-serif;
+-            background-color: #f7f7f7;
+-            color: #333;
+-            margin: 0;
+-            padding: 0;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            height: 100vh;
+-            width: 100vw;
+-            overflow: hidden;
+-            transition: background-color 0.3s, color 0.3s;
+-        }
+-
+-        .container {
+-            text-align: center;
+-            background-color: white;
+-            padding: 40px;
+-            border-radius: 10px;
+-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+-            width: 100%;
+-            height: 100%;
+-            display: flex;
+-            flex-direction: column;
+-            align-items: center;
+-            justify-content: center;
+-            box-sizing: border-box;
+-            position: relative;
+-            transition: background-color 0.3s, color 0.3s;
+-        }
+-
+-        .profile-pic {
+-            width: 275px;
+-            height: 275px;
+-            border-radius: 50%;
+-            object-fit: cover;
+-            margin-bottom: 20px;
+-            transition: transform 0.3s;
+-        }
+-
+-        .profile-pic:hover {
+-            transform: scale(1.1);
+-        }
+-
+-        h1 {
+-            font-size: 36px;
+-            color: #333;
+-            margin: 1px 0;
+-            font-weight: bold;
+-        }
+-
+-        p {
+-            font-size: 17px;
+-            color: #666;
+-            margin-bottom: 20px;
+-        }
+-
+-        .social-icons {
+-            margin-bottom: 30px;
+-        }
+-
+-        .social-icons img {
+-            width: 22px;
+-            height: 22px;
+-            margin: 0 8px;
+-            cursor: pointer;
+-            transition: filter 0.3s;
+-        }
+-
+-        .social-icons img:active {
+-            filter: hue-rotate(180deg) saturate(300%) brightness(0.7);
+-        }
+-
+-        .top-right-container {
+-            position: absolute;
+-            top: 20px;
+-            right: 20px;
+-            display: flex;
+-            align-items: center;
+-        }
+-
+-        .search-box {
+-            position: relative;
+-            display: none;
+-            align-items: center;
+-            transition: width 0.3s ease;
+-        }
+-
+-        .search-box input[type="text"] {
+-            font-size: 14px;
+-            padding: 8px 12px;
+-            border: 1px solid #ccc;
+-            border-radius: 5px;
+-            width: 200px;
+-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+-            transition: transform 0.3s ease;
+-        }
+-
+-        .search-box button {
+-            padding: 8px 10px;
+-            font-size: 14px;
+-            cursor: pointer;
+-            border: 1px solid #ccc;
+-            border-radius: 5px;
+-            margin-left: 5px;
+-            background-color: #f7f7f7;
+-        }
+-
+-        .search-icon {
+-            cursor: pointer;
+-            margin-right: 8px;
+-            width: 17px;
+-            height: 17px;
+-            transition: transform 0.3s ease, filter 0.3s ease;
+-        }
+-
+-        .search-icon:hover {
+-            transform: scale(1.2);
+-            filter: brightness(0.8);
+-        }
+-
+-        .links {
+-            display: flex;
+-            align-items: center;
+-            margin-right: 15px;
+-        }
+-
+-        .links a {
+-            font-size: 14px;
+-            color: #333;
+-            text-decoration: none;
+-            margin: 0 8px;
+-            padding: 8px 12px;
+-            border-radius: 5px;
+-            position: relative;
+-            transition: color 0.3s;
+-        }
+-
+-        .links a::after {
+-            content: '';
+-            position: absolute;
+-            width: 0;
+-            height: 3px;
+-            display: block;
+-            margin-top: 5px;
+-            right: 0;
+-            background: rgb(0, 128, 85);
+-            transition: width 0.3s ease;
+-        }
+-
+-        .links a:hover::after {
+-            width: 100%;
+-            left: 0;
+-            background: rgb(0, 113, 128);
+-        }
+-
+-        .mode-toggle {
+-            width: 30px;
+-            height: 30px;
+-            cursor: pointer;
+-            background-color: transparent;
+-            border: none;
+-            padding: 0;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            position: absolute;
+-            bottom: 20px;
+-            right: 20px;
+-            transition: transform 0.3s ease;
+-        }
+-
+-        .mode-toggle:hover {
+-            transform: scale(1.1);
+-        }
+-
+-        .mode-toggle svg {
+-            width: 20px;
+-            height: 20px;
+-        }
+-
+-        .dark-mode .mode-toggle .sun {
+-            display: block;
+-        }
+-
+-        .dark-mode .mode-toggle .moon {
+-            display: none;
+-        }
+-
+-        .mode-toggle .sun {
+-            display: none;
+-        }
+-
+-        .mode-toggle .moon {
+-            display: block;
+-        }
+-
+-        .dark-mode {
+-            background-color: #333;
+-            color: #f7f7f7;
+-        }
+-
+-        .dark-mode .container {
+-            background-color: #444;
+-            color: #f7f7f7;
+-        }
+-
+-        .dark-mode h1 {
+-            color: white;
+-        }
+-
+-        .dark-mode .links a {
+-            color: #f7f7f7;
+-        }
+-
+-        .dark-mode .social-icons img {
+-            filter: invert(100%);
+-        }
+-
+-        .highlight {
+-            background-color: yellow;
+-        }
+-    </style>
+-    <script>
+-        function toggleMode() {
+-            const body = document.body;
+-            const modeToggle = document.querySelector('.mode-toggle');
+-            body.classList.toggle('dark-mode');
+-            
+-            if (body.classList.contains('dark-mode')) {
+-                modeToggle.setAttribute('aria-label', 'Switch to light mode');
+-            } else {
+-                modeToggle.setAttribute('aria-label', 'Switch to dark mode');
+-            }
+-        }
+-
+-        function toggleSearch() {
+-            const searchBox = document.querySelector('.search-box');
+-            searchBox.style.display = searchBox.style.display === 'none' || searchBox.style.display === '' ? 'flex' : 'none';
+-        }
+-
+-        function searchAndHighlight() {
+-            const searchText = document.getElementById('search-input').value.toLowerCase();
+-            const elements = document.body.querySelectorAll('h1, p, a, .social-icons img');
+-            
+-            elements.forEach(el => {
+-                el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, "$1");
+-                if (el.textContent.toLowerCase().includes(searchText) && searchText) {
+-                    const regex = new RegExp(searchText, 'gi');
+-                    el.innerHTML = el.innerHTML.replace(regex, match => `<span class="highlight">${match}</span>`);
+-                }
+-            });
+-        }
+-
+-        function handleSearchKeydown(event) {
+-            if (event.key === 'Enter') {
+-                searchAndHighlight();
+-            }
+-        }
+-
+-        document.addEventListener('DOMContentLoaded', () => {
+-            const searchInput = document.getElementById('search-input');
+-            searchInput.addEventListener('keydown', handleSearchKeydown);
+-        });
+-    </script>
++    <link rel="icon" href="assets/images/tree_1.png" type="image/png">
++    <link rel="stylesheet" href="assets/css/main.css">
+ </head>
+ <body>
+-
+-<div class="container">
+-    <div class="top-right-container">
+-        <img src="search.png" alt="Search Icon" class="search-icon" onclick="toggleSearch()">
+-        <div class="search-box">
+-            <input type="text" id="search-input" placeholder="Search...">
+-            <button onclick="searchAndHighlight()">Search</button>
++    <div class="container">
++        <div class="top-right-container">
++            <div class="search-box">
++                <form onsubmit="return false;">
++                    <input type="text" id="search-input" placeholder="Search...">
++                    <button onclick="searchContent()">Search</button>
++                </form>
++            </div>
++            <img src="assets/images/search.png" class="search-icon" onclick="toggleSearch()" alt="Search">
++            <div class="links">
++                <a href="index.html">Home</a>
++                <a href="about.html">About</a>
++                <a href="blog.html">Blog</a>
++                <a href="resume.html">Resume</a>
++            </div>
+         </div>
+-        <div class="links">
+-            <a href="about.html"><b>About</b></a>
+-            <a href="blog.html"><b>Blog</b></a>
+-            <a href="https://drive.google.com/file/d/1ZCeWdQepqz5U5votvCwiRfeCK2Btk7WT/view?usp=sharing" target="_blank"><b>Resume</b></a>
+-            
++        
++        <img src="assets/images/profile_2.jpg" alt="Akshaay Kumar" class="profile-pic">
++        <h1>Akshaay Kumar</h1>
++        <p>Software Engineer | Explorer | Creator</p>
++        
++        <div class="social-icons">
++            <a href="https://twitter.com" target="_blank"><img src="assets/images/twitter_1.png" alt="Twitter"></a>
++            <a href="https://linkedin.com" target="_blank"><img src="assets/images/linkedin.png" alt="LinkedIn"></a>
++            <a href="https://github.com" target="_blank"><img src="assets/images/github.png" alt="GitHub"></a>
++            <a href="https://spotify.com" target="_blank"><img src="assets/images/spotify.png" alt="Spotify"></a>
+         </div>
++        
++        <button class="mode-toggle" aria-label="Toggle dark/light mode">
++            <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
++                <circle cx="12" cy="12" r="5"></circle>
++                <line x1="12" y1="1" x2="12" y2="3"></line>
++                <line x1="12" y1="21" x2="12" y2="23"></line>
++                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
++                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
++                <line x1="1" y1="12" x2="3" y2="12"></line>
++                <line x1="21" y1="12" x2="23" y2="12"></line>
++                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
++                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
++            </svg>
++            <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
++                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
++            </svg>
++        </button>
+     </div>
+ 
+-    <img src="image.jpeg" alt="Profile Picture" class="profile-pic">
+-    <h1>Akshaay Kumar</h1>
+-    <p>Every shot counts, on and off the court.</p>
+-
+-    <div class="social-icons">
+-        <a href="https://github.com/Akshaay1" target="_blank"><img src="github.png" alt="GitHub"></a>
+-        <a href="mailto:akshay1234avi@gmail.com"><img src="at.png" alt="Email"></a>
+-        <a href="https://www.linkedin.com/in/akshaay-kumar/" target="_blank"><img src="linkedin-logo.png" alt="LinkedIn"></a>
+-        <a href="https://www.instagram.com/akshaay__1/" target="_blank"><img src="ig.png" alt="Instagram"></a>
+-        <a href="https://x.com/Akshaay520938" target="_blank"><img src="twitter_1.png" alt="Twitter"></a>
+-        <a href="https://open.spotify.com/playlist/3AGcyWmyR998opRzUDGKtK?si=bf96e6f54e6a4144" target="_blank"><img src="spotify.png" alt="Spotify"></a>
+-    </div>
+-</div>
+-
+-<button class="mode-toggle" onclick="toggleMode()" aria-label="Toggle dark mode">
+-    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+-        <circle cx="12" cy="12" r="5"></circle>
+-        <line x1="12" y1="1" x2="12" y2="3"></line>
+-        <line x1="12" y1="21" x2="12" y2="23"></line>
+-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+-        <line x1="1" y1="12" x2="3" y2="12"></line>
+-        <line x1="21" y1="12" x2="23" y2="12"></line>
+-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+-    </svg>
+-    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+-    </svg>
+-</button>
+-
++    <script src="assets/js/main/main.js"></script>
+ </body>
+ </html>
+  
+\ No newline at end of file
+diff --git a/resume.html b/resume.html
+new file mode 100644
+index 0000000..a4a1cf6
+--- /dev/null
++++ b/resume.html
+@@ -0,0 +1,56 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Resume - Akshaay Kumar</title>
++    <link rel="icon" href="assets/images/tree_1.png" type="image/png">
++    <link rel="stylesheet" href="assets/css/styles.css">
++</head>
++<body>
++    <!-- Navigation -->
++    <a href="index.html" class="logo">Akshaay Kumar</a>
++    <div class="top-nav">
++        <div class="nav-links">
++            <a href="index.html">Home</a>
++            <a href="about.html">About</a>
++            <a href="blog.html">Blog</a>
++            <a href="resume.html" class="current">Resume</a>
++        </div>
++    </div>
++
++    <!-- Main Content -->
++    <div class="container">
++        <div class="header">
++            <p class="section-title">MY RESUME</p>
++            <h1>Resume</h1>
++        </div>
++
++        <div style="text-align: center; padding: 50px 0;">
++            <p>Resume page coming soon!</p>
++            <p>In the meantime, you can download my resume below:</p>
++            <a href="#" class="action-btn">Download Resume (PDF)</a>
++        </div>
++    </div>
++
++    <!-- Dark Mode Toggle -->
++    <button class="mode-toggle" aria-label="Toggle dark/light mode">
++        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
++            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
++        </svg>
++        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
++            <circle cx="12" cy="12" r="5"></circle>
++            <line x1="12" y1="1" x2="12" y2="3"></line>
++            <line x1="12" y1="21" x2="12" y2="23"></line>
++            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
++            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
++            <line x1="1" y1="12" x2="3" y2="12"></line>
++            <line x1="21" y1="12" x2="23" y2="12"></line>
++            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
++            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
++        </svg>
++    </button>
++
++    <script src="assets/js/script.js"></script>
++</body>
++</html>
+\ No newline at end of file
+-- 
+2.39.5 (Apple Git-154)
+
