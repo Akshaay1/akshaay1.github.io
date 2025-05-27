@@ -36,11 +36,14 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .profile-pic:hover {
-    transform: scale(1.1);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 191, 255, 0.4);
 }
 
 h1 {
@@ -135,6 +138,7 @@ p {
     border-radius: 5px;
     position: relative;
     transition: color 0.3s;
+    font-weight: bold;
 }
 
 .links a::after {
@@ -145,14 +149,13 @@ p {
     display: block;
     margin-top: 5px;
     right: 0;
-    background: rgb(0, 128, 85);
+    background: #00bfff;
     transition: width 0.3s ease;
 }
 
 .links a:hover::after {
     width: 100%;
     left: 0;
-    background: rgb(0, 113, 128);
 }
 
 .mode-toggle {
@@ -166,7 +169,7 @@ p {
     align-items: center;
     justify-content: center;
     position: fixed;
-    bottom: 80px;
+    bottom: 20px;
     right: 20px;
     transition: transform 0.3s ease;
     z-index: 200;

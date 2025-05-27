@@ -620,10 +620,6 @@ textarea.form-control {
     z-index: -1;
 }
 
-.net {
-    display: none;
-}
-
 .ball {
     position: absolute;
     bottom: 40px;
@@ -632,8 +628,7 @@ textarea.form-control {
     height: 40px;
     background: radial-gradient(circle at 15px 15px, #ff7b24, #d85500);
     border-radius: 50%;
-    cursor: grab;
-    transition: transform 0.2s;
+    cursor: pointer;
     z-index: 10;
     box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.3), 0 2px 3px rgba(0, 0, 0, 0.2);
 }
@@ -648,77 +643,21 @@ textarea.form-control {
     overflow: hidden;
 }
 
-.ball-lines::before,
-.ball-lines::after {
-    content: '';
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.ball-lines::before {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    transform: translateY(-50%);
-}
-
-.ball-lines::after {
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    transform: translateX(-50%);
-}
-
-/* Adding additional line for basketball */
-.ball::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    transform: rotateZ(60deg);
-}
-
-.ball::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    transform: rotateZ(-60deg);
-}
-
 .floor {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
-    height: 30px;
-    background-color: #a5670f;
-}
-
-.trajectory {
-    position: absolute;
-    background-color: rgba(255, 107, 0, 0.2);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    opacity: 0;
+    height: 20px;
+    background-color: #8b4513;
+    z-index: 5;
 }
 
 .score-display {
-    margin-top: 10px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
+    margin: 15px 0;
     color: #333;
-    transition: color 0.3s;
 }
 
 .dark-mode .score-display {
@@ -726,35 +665,130 @@ textarea.form-control {
 }
 
 .game-instructions {
-    margin-top: 15px;
+    margin: 10px 0 20px;
     font-size: 14px;
-    color: #666;
+    color: #555;
     max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    transition: color 0.3s;
+    line-height: 1.4;
 }
 
 .dark-mode .game-instructions {
-    color: #ccc;
+    color: #ddd;
 }
 
 .game-controls {
-    margin-top: 15px;
+    margin: 20px 0;
 }
 
 .game-button {
-    padding: 8px 15px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 14px;
     background-color: #00bfff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-    margin: 0 5px;
+    transition: background-color 0.2s;
 }
 
 .game-button:hover {
     background-color: #0099cc;
+}
+
+/* New simplified game controls */
+.aim-container {
+    width: 80%;
+    max-width: 300px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.aim-slider {
+    width: 100%;
+    margin: 10px 0;
+    -webkit-appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.aim-slider:hover {
+    opacity: 1;
+}
+
+.aim-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #00bfff;
+    cursor: pointer;
+}
+
+.aim-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #00bfff;
+    cursor: pointer;
+}
+
+.power-container {
+    width: 80%;
+    max-width: 300px;
+    margin: 10px auto;
+    position: relative;
+    height: 20px;
+    background-color: #d3d3d3;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.power-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #4CAF50, #FFEB3B, #F44336);
+    border-radius: 10px;
+    transition: width 0.05s linear;
+}
+
+.power-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 2px;
+    background-color: black;
+    z-index: 5;
+}
+
+.aiming-line {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    width: 2px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform-origin: bottom;
+    transform: rotate(45deg);
+    z-index: 5;
+}
+
+.dark-mode .aiming-line {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.trajectory {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 123, 36, 0.3);
+    border-radius: 50%;
+    z-index: 5;
+    pointer-events: none;
 } 

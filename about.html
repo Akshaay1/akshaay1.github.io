@@ -71,10 +71,23 @@
                     <div class="ball-lines"></div>
                 </div>
                 <div class="floor"></div>
+                <div class="aiming-line"></div>
             </div>
             <div class="score-display">Score: 0</div>
-            <div class="game-instructions">Click and drag the ball, then release to shoot! Try to get the ball through the hoop.</div>
+            <div class="game-instructions">First aim using the slider below, then click "Shoot" to start the power meter. Click again to set power and shoot!</div>
+            
+            <div class="aim-container">
+                <label for="aim-slider">Aim Angle:</label>
+                <input type="range" min="0" max="90" value="45" class="aim-slider" id="aim-slider">
+            </div>
+            
+            <div class="power-container">
+                <div class="power-bar"></div>
+                <div class="power-indicator"></div>
+            </div>
+            
             <div class="game-controls">
+                <button class="game-button shoot-button">Shoot</button>
                 <button class="game-button reset-button">Reset Game</button>
             </div>
         </div>
