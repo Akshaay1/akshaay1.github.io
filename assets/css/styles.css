@@ -759,26 +759,4 @@ textarea.form-control {
 
 .dark-mode .fun-message p {
     color: #fff;
-}
-
-.bounce-icon {
-    font-size: 40px;
-    animation: bounce 1s infinite alternate;
-    display: inline-block;
-    margin: 10px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.bounce-icon:hover {
-    transform: scale(1.2);
-}
-
-@keyframes bounce {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-15px);
-    }
 } 

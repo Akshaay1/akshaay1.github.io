@@ -15,37 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
     });
 
-    // Fun interaction for the bouncing basketball emoji
-    const bounceIcon = document.querySelector('.bounce-icon');
-    if (bounceIcon) {
-        let gameInitialized = false;
-        
-        bounceIcon.addEventListener('click', function() {
-            // Create a confetti effect when clicked
-            createConfetti();
-            
-            // Show the basketball game
-            const gameContainer = document.querySelector('.game-container');
-            if (gameContainer && gameContainer.style.display !== 'block') {
-                gameContainer.style.display = 'block';
-                // Scroll to the game
-                setTimeout(() => {
-                    gameContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 100);
-                
-                // Initialize the game when revealed
-                if (!gameInitialized) {
-                    initBasketballGame();
-                    gameInitialized = true;
-                }
-            }
-        });
-    }
-    
-    // Hide game container initially
+    // Initialize Canvas Basketball Game
     const gameContainer = document.querySelector('.game-container');
     if (gameContainer) {
-        gameContainer.style.display = 'none';
+        initBasketballGame();
     }
 });
 
@@ -53,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function createConfetti() {
     const colors = ['#ff5252', '#ffeb3b', '#2196f3', '#4caf50', '#9c27b0'];
     const container = document.querySelector('.fun-message');
+    
+    if (!container) return;
     
     for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
