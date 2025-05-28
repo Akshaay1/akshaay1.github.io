@@ -14,7 +14,7 @@
             <a href="index.html">Home</a>
             <a href="about.html" class="current">About</a>
             <a href="blog.html">Blog</a>
-            <a href="resume.html">Resume</a>
+            <a href="https://drive.google.com/file/d/1EkOvN1kp0WNBjv0qwc8aevnZOMot4TyZ/view?usp=sharing" target="_blank">Resume</a>
         </div>
     </div>
 
@@ -61,33 +61,19 @@
             </div>
         </div>
 
-        <!-- Basketball Game Section -->
+        <!-- Fun Interactive Section (replacing Basketball Game) -->
         <div class="game-section">
-            <h2>Basketball Challenge</h2>
+            <h2>Take a Break!</h2>
+            <div class="fun-message">
+                <p>Hey! You must be bored scrolling through my website. Here's something to bounce your head on!</p>
+                <div class="bounce-icon">🏀</div>
+            </div>
             <div class="game-container">
-                <div class="backboard"></div>
-                <div class="basket"></div>
-                <div class="ball">
-                    <div class="ball-lines"></div>
-                </div>
-                <div class="floor"></div>
-                <div class="aiming-line"></div>
+                <div id="score">Score: 0</div>
+                <canvas id="gameCanvas"></canvas>
             </div>
-            <div class="score-display">Score: 0</div>
-            <div class="game-instructions">First aim using the slider below, then click "Shoot" to start the power meter. Click again to set power and shoot!</div>
-            
-            <div class="aim-container">
-                <label for="aim-slider">Aim Angle:</label>
-                <input type="range" min="0" max="90" value="45" class="aim-slider" id="aim-slider">
-            </div>
-            
-            <div class="power-container">
-                <div class="power-bar"></div>
-                <div class="power-indicator"></div>
-            </div>
-            
+            <div class="game-instructions">Click and drag the ball, then release to shoot! Try to get the ball through the hoop.</div>
             <div class="game-controls">
-                <button class="game-button shoot-button">Shoot</button>
                 <button class="game-button reset-button">Reset Game</button>
             </div>
         </div>
