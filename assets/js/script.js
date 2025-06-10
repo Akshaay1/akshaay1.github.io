@@ -77,6 +77,8 @@ function initBasketballGame() {
     let gravity = 0.5;
     let dragStart = null;
     let returning = false;
+    let shotStartTime = null; // Track when shot started
+    let autoResetTimeout = null; // Timeout for auto-reset
     
     const ballStart = { x: 70, y: canvas.height - 50 };
     
@@ -173,7 +175,23 @@ function initBasketballGame() {
             ball.vy = (dragStart.y - ball.y) * 0.25;
             ball.isDragging = false;
             ball.shot = true;
+            shotStartTime = Date.now(); // Record shot start time
+            
+            // Set auto-reset timeout (10 seconds)
+            autoResetTimeout = setTimeout(() => {
+                if (ball.shot && !returning) {
+                    triggerAutoReset();
+                }
+            }, 10000);
         }
+    }
+    
+    function triggerAutoReset() {
+        clearTimeout(autoResetTimeout);
+        returning = true;
+        ball.shot = false;
+        ball.vx = 0;
+        ball.vy = 0;
     }
     
     function update() {
@@ -204,16 +222,21 @@ function initBasketballGame() {
             ) {
                 score++;
                 document.getElementById("score").innerText = `Score: ${score}`;
-                ball.shot = false;
-                returning = true;
+                clearTimeout(autoResetTimeout);
+                triggerAutoReset();
             }
             
-            if (
-                Math.abs(ball.vx) < 0.5 &&
-                Math.abs(ball.vy) < 0.5 &&
-                ball.y + ball.radius >= canvas.height - 5
-            ) {
-                returning = true;
+            // Improved auto-reset conditions
+            const timeElapsed = Date.now() - shotStartTime;
+            const isNearlyStationary = Math.abs(ball.vx) < 0.5 && Math.abs(ball.vy) < 0.5;
+            const isOnGround = ball.y + ball.radius >= canvas.height - 25;
+            const hasBouncedEnough = timeElapsed > 3000; // At least 3 seconds
+            
+            if ((isNearlyStationary && isOnGround) || 
+                (hasBouncedEnough && isNearlyStationary) ||
+                timeElapsed > 8000) { // Force reset after 8 seconds
+                clearTimeout(autoResetTimeout);
+                triggerAutoReset();
             }
         }
         
@@ -221,8 +244,8 @@ function initBasketballGame() {
             let dx = ballStart.x - ball.x;
             let dy = ballStart.y - ball.y;
             
-            ball.x += dx * 0.1;
-            ball.y += dy * 0.1;
+            ball.x += dx * 0.15; // Slightly faster return
+            ball.y += dy * 0.15;
             
             if (Math.abs(dx) < 2 && Math.abs(dy) < 2) {
                 ball.x = ballStart.x;
@@ -327,6 +350,7 @@ function initBasketballGame() {
         resetButton.addEventListener('click', function() {
             score = 0;
             document.getElementById("score").innerText = `Score: ${score}`;
+            clearTimeout(autoResetTimeout);
             ball.x = ballStart.x;
             ball.y = ballStart.y;
             ball.vx = 0;
