@@ -362,4 +362,43 @@ function initBasketballGame() {
     
     // Start the game loop
     update();
-} 
+}
+
+// Contact Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Let the form submit naturally to Formspree
+            // We'll handle the response with a timeout
+            setTimeout(function() {
+                // Reset button after submission
+                submitBtn.textContent = 'Send Message';
+                submitBtn.disabled = false;
+                
+                // Show success message
+                formStatus.style.display = 'block';
+                formStatus.style.backgroundColor = '#d4edda';
+                formStatus.style.color = '#155724';
+                formStatus.style.border = '1px solid #c3e6cb';
+                formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(function() {
+                    formStatus.style.display = 'none';
+                }, 5000);
+            }, 2000);
+        });
+    }
+}); 

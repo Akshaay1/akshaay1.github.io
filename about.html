@@ -31,7 +31,6 @@
             </div>
             <div class="about-content">
                 <p>Hey! I'm <span class="highlight">Akshaay</span> — a passionate tech explorer and full-time AI enthusiast with a soft spot for building cool, innovative stuff. I'm all about using tech to shake things up (in a good way).</p>
-                <p>Whether it's web stuff or the next big AI, I'm constantly levelling up to build things that actually matter.</p>
             </div>
         </div>
 
@@ -90,21 +89,24 @@
                             </svg>
                         </div>
                         <h3>Email</h3>
-                        <p>info@akshaay.com</p>
-                        <a href="mailto:info@akshaay.com" class="contact-link">Send a message</a>
+                        <p>akshay1234avi@gmail.com</p>
+                        <a href="mailto:akshay1234avi@gmail.com" class="contact-link">Send a message</a>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Your Message"></textarea>
-                    </div>
-                    <button class="submit-btn">Send Message</button>
+                    <form action="https://formspree.io/f/xblygbod" method="POST" id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                    <div id="form-status" style="display: none; margin-top: 10px; padding: 10px; border-radius: 5px;"></div>
                 </div>
             </div>
         </div>
