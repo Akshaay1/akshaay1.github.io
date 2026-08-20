@@ -369,33 +369,37 @@ function initBasketballGame() {
     }
 
     function drawNet(cx, cy, r, ry) {
-        const netH = 46, nSegs = 12, wave = netWave;
+        const netH = 44, nSegs = 12, wave = netWave;
+        const botRX = r * 0.52, botRY = ry * 0.62;   // OPEN bottom ring (not a point)
+        const botCY = cy + netH + wave * 7;
         ctx.save(); ctx.lineWidth = 0.9;
 
-        // Vertical cords from rim perimeter to bottom point
+        // Vertical cords: each rim point drapes to the matching point on the
+        // smaller (but still open) bottom ring, bowed gently toward centre.
         for (let i = 0; i <= nSegs; i++) {
             const angle = (Math.PI * 2 * i) / nSegs;
             const topX = cx + r * Math.cos(angle);
             const topY = cy + ry * Math.sin(angle);
             const sway = Math.sin(angle) * wave * 6;
-            const botX = cx + sway;
-            const botY = cy + netH + wave * 7;
-            const alpha = 0.55 + 0.25 * Math.abs(Math.sin(angle));
-            ctx.strokeStyle = `rgba(230,230,230,${alpha})`;
+            const botX = cx + botRX * Math.cos(angle) + sway;
+            const botY = botCY + botRY * Math.sin(angle);
+            const midX = cx + (topX - cx) * 0.55;    // drape pulls slightly inward
+            const alpha = 0.5 + 0.28 * Math.abs(Math.sin(angle));
+            ctx.strokeStyle = `rgba(235,235,235,${alpha})`;
             ctx.beginPath();
             ctx.moveTo(topX, topY);
-            ctx.bezierCurveTo(topX, topY + netH*0.45, botX, botY - netH*0.28, botX, botY);
+            ctx.bezierCurveTo(midX, topY + netH * 0.5, midX, botY - netH * 0.25, botX, botY);
             ctx.stroke();
         }
 
-        // Horizontal rings (4 levels, shrinking)
+        // Horizontal rings shrinking to the open bottom ring (diamond mesh)
         for (let lv = 1; lv <= 4; lv++) {
-            const t = lv / 5;
+            const t = lv / 4;
             const ringY  = cy + netH * t + wave * 5 * t;
-            const ringRX = r * (1 - t * 0.58) + wave * 4 * t;
-            const ringRY = ry * (1 - t * 0.5);
+            const ringRX = r * (1 - t * 0.48) + wave * 3 * t;   // ends near botRX
+            const ringRY = ry * (1 - t * 0.38);
             const swX    = wave * 2.5 * t;
-            ctx.strokeStyle = `rgba(215,215,215,${0.7 - t * 0.08})`;
+            ctx.strokeStyle = `rgba(220,220,220,${0.7 - t * 0.1})`;
             ctx.lineWidth   = lv === 1 ? 1.1 : 0.8;
             ctx.beginPath();
             ctx.ellipse(cx + swX, ringY, ringRX, ringRY, 0, 0, Math.PI * 2);

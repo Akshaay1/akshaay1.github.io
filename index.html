@@ -12,11 +12,12 @@
         <div class="top-right-container">
             <div class="search-box">
                 <form onsubmit="return false;">
-                    <input type="text" id="search-input" placeholder="Search...">
-                    <button onclick="searchContent()">Search</button>
+                    <input type="text" id="search-input" placeholder="Search the site..." autocomplete="off">
+                    <button type="submit">Search</button>
                 </form>
+                <div id="search-results" class="search-results"></div>
             </div>
-            <img src="assets/images/search.png" class="search-icon" onclick="toggleSearch()" alt="Search">
+            <img src="assets/images/search.png" class="search-icon" alt="Search">
             <div class="links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
