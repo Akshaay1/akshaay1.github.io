@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal Defect Detector — Akshaay Kumar</title>
+    <link rel="icon" href="../assets/images/tree_1.png" type="image/png">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .mdd-lead{font-family:var(--serif);font-size:26px;font-weight:500;line-height:1.45;letter-spacing:-0.01em;color:#1c1c1e;max-width:820px;margin:0 auto 26px;text-align:center}
+        .dark-mode .mdd-lead{color:#f2f2f4}
+        .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+        .btn-primary,.btn-ghost{font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:.2px;padding:13px 26px;border-radius:9px;text-decoration:none;transition:transform .2s,background .2s,border-color .2s;display:inline-flex;align-items:center;gap:9px}
+        .btn-primary{background:#18181b;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.16)}
+        .btn-primary:hover{background:#2c2c31;transform:translateY(-2px)}
+        .dark-mode .btn-primary{background:var(--accent);color:#18181b}
+        .dark-mode .btn-primary:hover{background:var(--accent-strong)}
+        .btn-ghost{background:transparent;color:inherit;border:1.5px solid rgba(0,0,0,0.18)}
+        .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+        .dark-mode .btn-ghost{border-color:rgba(255,255,255,0.22)}
+
+        .sec{margin:0 auto 64px;max-width:1000px}
+        .sec > .section-title{text-align:center}
+        .sec-head{text-align:center;margin-bottom:34px}
+        .sec-head h2{font-size:30px;margin:6px 0 0}
+        .sec-sub{font-family:var(--sans);font-size:16px;color:#6b6b72;max-width:60ch;margin:12px auto 0;line-height:1.6}
+        .dark-mode .sec-sub{color:#a6a6ad}
+
+        .defects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto}
+        .defect{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:16px 18px;transition:transform .2s,box-shadow .2s}
+        .defect:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,0.10)}
+        .dark-mode .defect{background:#1b1b1e;border-color:rgba(255,255,255,0.08)}
+        .defect .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none}
+        .defect .nm{font-family:var(--sans);font-weight:600;font-size:15px}
+        @media(max-width:720px){.defects{grid-template-columns:repeat(2,1fr)}}
+
+        .methods{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:900px;margin:0 auto}
+        .method{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;padding:26px 28px;transition:transform .2s,box-shadow .2s}
+        .method:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,0.10)}
+        .dark-mode .method{background:#1b1b1e;border-color:rgba(255,255,255,0.08)}
+        .method .idx{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--accent)}
+        .method h3{font-family:var(--serif);font-size:20px;font-weight:600;margin:8px 0 10px;letter-spacing:-0.01em}
+        .method p{font-family:var(--sans);font-size:15px;line-height:1.6;color:#555;margin:0}
+        .dark-mode .method p{color:#b0b0b8}
+        @media(max-width:720px){.methods{grid-template-columns:1fr}}
+
+        .stack{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:720px;margin:0 auto}
+        .tag{font-family:var(--sans);font-size:14px;font-weight:600;padding:9px 18px;border-radius:50px;background:var(--accent-soft);color:var(--accent-strong)}
+        .dark-mode .tag{color:var(--accent)}
+
+        .codeblock{max-width:720px;margin:0 auto;background:#141416;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:24px 26px;overflow-x:auto}
+        .codeblock pre{margin:0;font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:14px;line-height:1.9;color:#e8e8ea;white-space:pre}
+        .codeblock .c{color:#7d7d86}
+        .codeblock .p{color:var(--accent)}
+
+        .note{max-width:720px;margin:22px auto 0;font-family:var(--sans);font-size:14px;line-height:1.6;color:#6b6b72;text-align:center;padding:16px 20px;background:rgba(0,0,0,0.03);border-radius:12px;border:1px solid rgba(0,0,0,0.06)}
+        .dark-mode .note{color:#a6a6ad;background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.07)}
+        .back-link{display:inline-block;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--accent);text-decoration:none;margin-bottom:8px}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="top-nav">
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../blog.html">Blog</a>
+            <a href="../papercut/index.html">Papercut</a>
+            <a href="https://drive.google.com/file/d/1EkOvN1kp0WNBjv0qwc8aevnZOMot4TyZ/view?usp=sharing" target="_blank">Resume</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Hero -->
+        <div class="header">
+            <a href="../about.html" class="back-link">&larr; Back to About</a>
+            <p class="section-title">Project</p>
+            <h1>Metal Defect Detector</h1>
+            <p class="about-role">Computer Vision &middot; Deep Learning &middot; Flask</p>
+        </div>
+
+        <p class="mdd-lead">A deep-learning system that inspects a metal surface image and classifies it into one of nine common defect types — bridging my materials background with applied AI.</p>
+
+        <div class="cta-row">
+            <a href="https://github.com/Akshaay1/metal-defect-detector" target="_blank" class="btn-primary">View on GitHub &nearr;</a>
+            <a href="#run" class="btn-ghost">Run it locally</a>
+        </div>
+
+        <!-- Meta facts -->
+        <div class="facts" style="margin-top:44px">
+            <div class="fact"><div class="k">Domain</div><div class="v">Computer Vision</div></div>
+            <div class="fact"><div class="k">Stack</div><div class="v">TensorFlow &middot; Flask</div></div>
+            <div class="fact"><div class="k">Classes</div><div class="v">9 defect types</div></div>
+            <div class="fact"><div class="k">Approaches</div><div class="v">5 architectures</div></div>
+        </div>
+
+        <!-- Defect types -->
+        <div class="sec">
+            <div class="sec-head">
+                <p class="section-title">What it detects</p>
+                <h2>Nine surface-defect types</h2>
+                <p class="sec-sub">Trained on common steel-surface defects, the models classify a surface image into the category it most resembles.</p>
+            </div>
+            <div class="defects">
+                <div class="defect"><span class="dot"></span><span class="nm">Crazing</span></div>
+                <div class="defect"><span class="dot"></span><span class="nm">Crack</span></div>
+                <div class="defect"><span class="dot"></span><span class="nm">Inclusion</span></div>
+                <div class="defect"><span class="dot"></span><span class="nm">Scratches</span></div>
+                <div class="defect"><span class="dot"></span><span class="nm">Indentation</span></div>
+                <div class="defect"><span class="dot"></span><span class="nm">Oil Spot</span></div>
+                <div class="defect"><span class="dot"></span><span class="nm">Rolling</span></div>
+                <div class="defect"><span class="dot"></span><span class="nm">Rusting</span></div>
+                <div class="defect"><span class="dot"></span><span class="nm">Welding Line</span></div>
+            </div>
+        </div>
+
+        <!-- Methods -->
+        <div class="sec">
+            <div class="sec-head">
+                <p class="section-title">How it works</p>
+                <h2>Five deep-learning approaches</h2>
+                <p class="sec-sub">The project implements and compares several architectures for the same task — each attacking defect recognition from a different angle.</p>
+            </div>
+            <div class="methods">
+                <div class="method">
+                    <div class="idx">01</div>
+                    <h3>ArcFace Loss</h3>
+                    <p>An additive angular-margin loss that pulls each defect class into a tighter, better-separated cluster in feature space — sharper decision boundaries between look-alike defects.</p>
+                </div>
+                <div class="method">
+                    <div class="idx">02</div>
+                    <h3>Multitask Learning</h3>
+                    <p>One network trained to classify, segment, and localize defects at once, so shared features are richer than any single task would learn alone.</p>
+                </div>
+                <div class="method">
+                    <div class="idx">03</div>
+                    <h3>Contrastive Learning</h3>
+                    <p>A SimCLR-style self-supervised stage that learns defect representations from unlabeled images before fine-tuning — useful when labeled data is scarce.</p>
+                </div>
+                <div class="method">
+                    <div class="idx">04</div>
+                    <h3>U-Net</h3>
+                    <p>An encoder–decoder that segments the defect region pixel-by-pixel while classifying it, giving a spatial map of where the flaw sits on the surface.</p>
+                </div>
+                <div class="method">
+                    <div class="idx">05</div>
+                    <h3>Deep Texture Network</h3>
+                    <p>An architecture specialized for the fine-grained texture cues that distinguish metal defects, where the pattern matters more than the shape.</p>
+                </div>
+                <div class="method" style="display:flex;flex-direction:column;justify-content:center;background:var(--accent-soft);border:none">
+                    <h3 style="margin-top:0">Ensemble</h3>
+                    <p style="color:var(--accent-strong)">The trained models can be combined into an ensemble at inference — pooling their predictions for a more robust final call.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stack -->
+        <div class="sec">
+            <div class="sec-head">
+                <p class="section-title">Built with</p>
+                <h2>Tech stack</h2>
+            </div>
+            <div class="stack">
+                <span class="tag">TensorFlow / Keras</span>
+                <span class="tag">Flask</span>
+                <span class="tag">OpenCV</span>
+                <span class="tag">NumPy</span>
+                <span class="tag">Python</span>
+                <span class="tag">Bootstrap UI</span>
+            </div>
+        </div>
+
+        <!-- Run locally -->
+        <div class="sec" id="run">
+            <div class="sec-head">
+                <p class="section-title">Try it</p>
+                <h2>Run it locally</h2>
+                <p class="sec-sub">The detector serves a Flask web app; trained models download automatically on first launch.</p>
+            </div>
+            <div class="codeblock"><pre><span class="c"># clone and set up</span>
+git clone https://github.com/Akshaay1/metal-defect-detector
+cd metal-defect-detector
+pip install -r requirements.txt
+
+<span class="c"># launch the web app (models auto-download on first run)</span>
+python app.py
+
+<span class="c"># then open</span>
+<span class="p">http://localhost:5000</span></pre></div>
+            <p class="note">This is a TensorFlow-powered app, so the live detector runs on a Python backend rather than static hosting. Grab the code above to run the full interactive tool, or explore the source on GitHub.</p>
+        </div>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="mode-toggle" aria-label="Toggle dark/light mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    </button>
+
+    <script>
+    (function(){
+        var body=document.body, btn=document.querySelector('.mode-toggle');
+        if(localStorage.getItem('darkMode')==='true') body.classList.add('dark-mode');
+        if(btn) btn.addEventListener('click',function(){
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+        });
+    })();
+    </script>
+</body>
+</html>
