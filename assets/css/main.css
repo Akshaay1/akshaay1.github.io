@@ -291,3 +291,8 @@ p {
 .highlight {
     background-color: yellow;
 } 
+/* ABOUT-HIDDEN: the About tab stays visible but clicking it does nothing.
+   about.html itself is untouched. To bring it back, delete this block here,
+   the same block in the other stylesheet (main.css / styles.css), and
+   uncomment the About line in SEARCH_PAGES in assets/js/main/main.js. */
+a[href$="about.html"]{pointer-events:none;cursor:default}

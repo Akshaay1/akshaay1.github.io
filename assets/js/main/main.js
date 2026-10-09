@@ -31,7 +31,8 @@ function toggleSearch() {
 // Fetch each page once, index its text, and jump to wherever a word appears.
 // (Resume is an external Google Drive link, so it's not indexed.)
 const SEARCH_PAGES = [
-    { url: 'about.html',                       label: 'About' },
+    // ABOUT-HIDDEN: uncomment to make the About page searchable again.
+    // { url: 'about.html',                       label: 'About' },
     { url: 'blog.html',                        label: 'Blog' },
     { url: 'papercut/index.html',              label: 'Papercut' },
     { url: 'metal-defect-detector/index.html', label: 'Metal Defect Detector' }
